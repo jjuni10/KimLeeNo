@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraControl : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class CameraControl : MonoBehaviour
 
     void CameraMove()
     {
-        Vector3 cameraPos = target.position+offset;
+        Vector3 cameraPos = target.position + target.rotation * offset;
 
         transform.position = cameraPos;
     }
@@ -29,6 +31,6 @@ public class CameraControl : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
 
-        transform.rotation = targetRotation*rotation;
+        transform.rotation = targetRotation;
     }
 }
