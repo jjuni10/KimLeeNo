@@ -14,7 +14,16 @@ public class Player : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public float turnSpeed;
-    bool _canMove;
+    bool _canMove=false;
+
+    [Header("Boost")]
+    public float boostPower;
+    public float boostDuration;
+    public bool isBoosting;
+    float _boostEndTime=0f;
+
+    [Header("Camera")]
+    public CameraControl cameraController;
 
     void Awake()
     {
@@ -23,6 +32,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        PlayerBoost();
+
         // 플레이어 움직임
         if(_canMove)
         {
@@ -34,6 +45,8 @@ public class Player : MonoBehaviour
 
         // 속도 제한
         LimitSpeed();
+
+        cameraController.OffsetChange(_rb.velocity.magnitude,isBoosting);
     }
 
     void PlayerMove()
@@ -54,7 +67,8 @@ public class Player : MonoBehaviour
         }
 
         // 이동 (AddForce를 사용하여 힘을 가함)
-        _rb.AddForce(_moveVec * speed, ForceMode.Acceleration);
+        float currentSpeed = isBoosting ? speed * boostPower : speed;
+        _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
     }
 
     void PlayerRotation()
@@ -71,9 +85,25 @@ public class Player : MonoBehaviour
     void LimitSpeed()
     {
         // 현재 속도를 가져와서 최대 속도를 넘지 않도록 제한
+        float currentMaxSpeed=isBoosting?maxSpeed*boostPower:maxSpeed;
+
         if (_rb.velocity.magnitude > maxSpeed)
         {
-            _rb.velocity = _rb.velocity.normalized * maxSpeed;
+            _rb.velocity = _rb.velocity.normalized * currentMaxSpeed;
+        }
+    }
+
+    void PlayerBoost()
+    {
+        if (Input.GetKeyDown(KeyCode.F)&&!isBoosting)
+        {
+            isBoosting = true;
+            _boostEndTime = Time.time + boostDuration;
+        }
+
+        if(isBoosting&&Time.time>_boostEndTime)
+        {
+            isBoosting=false;
         }
     }
 

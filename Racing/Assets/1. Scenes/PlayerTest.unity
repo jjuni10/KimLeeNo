@@ -6172,6 +6172,13 @@ MonoBehaviour:
   target: {fileID: 692448909}
   offset: {x: 0, y: 3, z: -8}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  zoomSpeed: 0
+  downZoom: 5
+  upZoom: 0.1
+  minZoom: 10
+  maxZoom: 11
+  boostZoom: 2
+  _previousSpeed: 0
 --- !u!1 &412180562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8813640644711641499, guid: fe49d0598fc104142ae98589a9da4c20, type: 3}
@@ -6278,6 +6285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5065351467115562746, guid: f35c161299009be49a22f88d31232588, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 411660478}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
