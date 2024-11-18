@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public float turnSpeed;
+    bool _canMove;
 
     void Awake()
     {
@@ -23,7 +24,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // 플레이어 움직임
-        PlayerMove();
+        if(_canMove)
+        {
+            PlayerMove();
+        }
 
         // 플레이어 각도 전환
         PlayerRotation();
@@ -71,5 +75,15 @@ public class Player : MonoBehaviour
         {
             _rb.velocity = _rb.velocity.normalized * maxSpeed;
         }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        _canMove = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        _canMove=false;
     }
 }
