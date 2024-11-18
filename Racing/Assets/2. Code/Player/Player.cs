@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Player")]
     public float speed;
+    public float basicSpeed;
     public float maxSpeed;
     public float turnSpeed;
     bool _canMove=false;
@@ -21,6 +22,15 @@ public class Player : MonoBehaviour
     public float boostDuration;
     public bool isBoosting;
     float _boostEndTime=0f;
+
+    [Header("Drift")]
+    public float driftFactor;
+    public float driftGrip;
+    public float normalDrag;
+    public float driftDrag;
+    public float angularDragValue;
+    public float angularDragNormal;
+    public bool isDrifting;
 
     [Header("Camera")]
     public CameraControl cameraController;
@@ -42,6 +52,9 @@ public class Player : MonoBehaviour
 
         // 플레이어 각도 전환
         PlayerRotation();
+
+        // 플레이어 드리프트
+        PlayerDrift();
 
         // 속도 제한
         LimitSpeed();
@@ -104,6 +117,31 @@ public class Player : MonoBehaviour
         if(isBoosting&&Time.time>_boostEndTime)
         {
             isBoosting=false;
+        }
+    }
+
+    void PlayerDrift()
+    {
+        if (Input.GetKey(KeyCode.H))
+        {
+            isDrifting = true;
+
+            Vector3 forwardVelocity=Vector3.Project(_rb.velocity,transform.forward);
+            Vector3 rightVelocity=Vector3.Project(_rb.velocity,transform.right);
+
+            _rb.velocity = forwardVelocity + rightVelocity * driftFactor;
+
+            _rb.drag = driftDrag;
+            _rb.angularDrag = angularDragValue;
+
+            speed *= driftGrip;
+        }
+        else
+        {
+            _rb.drag = normalDrag;
+            _rb.angularDrag = angularDragNormal;
+
+            speed = basicSpeed;
         }
     }
 
