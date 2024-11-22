@@ -8,13 +8,20 @@ public class CarEngine : MonoBehaviour
     public float maxSteerAngle = 45f;
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
+    public float maxMotorTorque = 80f;
+    public float currentSpeed;
+    public float maxSpeed = 100f;
+
+    public Vector3 centerOfMass;
 
     private List<Transform> nodes;
     private int currentNode = 0;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+
         GameObject pathObject = GameObject.FindWithTag("Path");
         if (pathObject != null)
         {
@@ -37,6 +44,8 @@ public class CarEngine : MonoBehaviour
     private void FixedUpdate()
     {
         ApplySteer();
+        Drive();
+        CheckWaypointDistance();
     }
 
     private void ApplySteer()
@@ -45,5 +54,35 @@ public class CarEngine : MonoBehaviour
         float newSteer = (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
         wheelFL.steerAngle = newSteer;
         wheelFR.steerAngle = newSteer;
+    }
+
+    private void Drive()
+    {
+        currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 1000;
+
+        if(currentSpeed < maxSpeed)
+        {
+            wheelFL.motorTorque = maxMotorTorque;
+            wheelFR.motorTorque = maxMotorTorque;
+        }
+        else
+        {
+            wheelFL.motorTorque = 0;
+            wheelFR.motorTorque = 0;
+        }
+    }
+    private void CheckWaypointDistance()
+    {
+        if(Vector3.Distance(transform.position, nodes[currentNode].position) < 5.0f)
+        {
+            if(currentNode == nodes.Count - 1)
+            {
+                currentNode = 0;
+            }
+            else
+            {
+                currentNode++;
+            }
+        }
     }
 }

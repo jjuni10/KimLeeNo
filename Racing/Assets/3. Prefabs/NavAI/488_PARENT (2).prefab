@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4326686240240987096}
+  - component: {fileID: 5434345701419582461}
   m_Layer: 7
   m_Name: BONE_WHEEL_FL
   m_TagString: Untagged
@@ -34,6 +35,19 @@ Transform:
   - {fileID: 2700449022644505023}
   m_Father: {fileID: 2721535223548656661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5434345701419582461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36685142052335143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bf366ddba3ba54fba8505524a0728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 2112254311279928804}
 --- !u!1 &546258886417281424
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +174,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813037852590634100}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
@@ -532,6 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4678893962696552962}
+  - component: {fileID: 2517858129823062462}
   m_Layer: 7
   m_Name: BONE_WHEEL_FR
   m_TagString: Untagged
@@ -557,6 +572,19 @@ Transform:
   - {fileID: 3373602331156218589}
   m_Father: {fileID: 2721535223548656661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2517858129823062462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3479006535490151275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bf366ddba3ba54fba8505524a0728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 4997510815214974951}
 --- !u!1 &3504873229004873142
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +713,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6603411964000315774}
   - component: {fileID: 2533869865864175463}
-  - component: {fileID: 6623997741436607502}
   - component: {fileID: 807828923950891656}
   - component: {fileID: 3415773173481496865}
   m_Layer: 7
@@ -805,28 +832,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 0}
   m_Enabled: 1
---- !u!195 &6623997741436607502
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3971883773477403649}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &807828923950891656
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -870,6 +875,10 @@ MonoBehaviour:
   maxSteerAngle: 45
   wheelFL: {fileID: 2112254311279928804}
   wheelFR: {fileID: 4997510815214974951}
+  maxMotorTorque: 80
+  currentSpeed: 0
+  maxSpeed: 100
+  centerOfMass: {x: 0, y: -0.2, z: 0}
 --- !u!1 &3990361807349365848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886143713754548940}
+  - component: {fileID: 6989195920703208865}
   m_Layer: 7
   m_Name: BONE_WHEEL_RL
   m_TagString: Untagged
@@ -1105,6 +1115,19 @@ Transform:
   - {fileID: 9177711454802790750}
   m_Father: {fileID: 2721535223548656661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6989195920703208865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798874832961151039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bf366ddba3ba54fba8505524a0728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 4977649863108782007}
 --- !u!1 &5172732177998267276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1337,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390032551684564224}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
@@ -1471,7 +1494,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5577662961005637626}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
@@ -1983,7 +2006,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936754288325262344}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
@@ -2438,6 +2461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7302997449058182765}
+  - component: {fileID: 8939849599652965581}
   m_Layer: 7
   m_Name: BONE_WHEEL_RR
   m_TagString: Untagged
@@ -2463,6 +2487,19 @@ Transform:
   - {fileID: 5691592920601001159}
   m_Father: {fileID: 2721535223548656661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8939849599652965581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886978658612795719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bf366ddba3ba54fba8505524a0728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWheel: {fileID: 7721188722908318659}
 --- !u!1 &7894712635624377799
 GameObject:
   m_ObjectHideFlags: 0
