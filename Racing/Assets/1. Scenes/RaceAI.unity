@@ -5468,9 +5468,9 @@ MonoBehaviour:
   - {fileID: 1831393411}
   rasingCars:
   - {fileID: 7386763563658240344, guid: 57cb2b11ee63d4642a096daaa78070ce, type: 3}
-  - {fileID: 7386763563658240344, guid: 57cb2b11ee63d4642a096daaa78070ce, type: 3}
-  - {fileID: 7386763563658240344, guid: 57cb2b11ee63d4642a096daaa78070ce, type: 3}
-  - {fileID: 7386763563658240344, guid: 57cb2b11ee63d4642a096daaa78070ce, type: 3}
+  - {fileID: 3971883773477403649, guid: ed729751f8e8f2748b84c508dcb26b14, type: 3}
+  - {fileID: 6589966068394454464, guid: b9996a3f78c05a9438967b8da0cfc0ef, type: 3}
+  - {fileID: 8251065305439643807, guid: 2bbc6095f2fc983459e744e88b8763c1, type: 3}
   - {fileID: 7386763563658240344, guid: 57cb2b11ee63d4642a096daaa78070ce, type: 3}
 --- !u!1 &1578053660
 GameObject:
