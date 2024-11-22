@@ -2113,8 +2113,8 @@ GameObject:
   - component: {fileID: 5458082844769479962}
   - component: {fileID: 2534419910409821031}
   - component: {fileID: 124321996004906014}
-  - component: {fileID: 4662132926382544266}
   - component: {fileID: 1135875793794072005}
+  - component: {fileID: 5025255484512143876}
   m_Layer: 7
   m_Name: 488_PARENT (1)
   m_TagString: Untagged
@@ -2254,28 +2254,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &4662132926382544266
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7386763563658240344}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &1135875793794072005
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2303,6 +2281,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5025255484512143876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386763563658240344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1ededd63e069640a4d4dfb4406a2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}
+  maxSteerAngle: 45
+  wheelFL: {fileID: 6534674959001113859}
+  wheelFR: {fileID: 6425603836817257693}
 --- !u!1 &7711036311392377025
 GameObject:
   m_ObjectHideFlags: 0
