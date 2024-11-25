@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3940934207661482117}
   - component: {fileID: 4499024546746150642}
   - component: {fileID: 5065351467115562746}
+  - component: {fileID: 296768713570854749}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -130,7 +131,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3940934207661482118}
   serializedVersion: 4
-  m_Mass: 100
+  m_Mass: 1500
   m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfec2166b77ef04fbbd97ee5cca735d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curSpeed: 0
   speed: 0
   basicSpeed: 40
   maxSpeed: 60
@@ -168,14 +170,23 @@ MonoBehaviour:
   boostPower: 2
   boostDuration: 2
   isBoosting: 0
-  driftFactor: 0.8
-  driftGrip: 0.5
-  normalDrag: 1
-  driftDrag: 1.2
-  angularDragValue: 0.2
-  angularDragNormal: 0.05
   isDrifting: 0
+  driftPower: 0.5
   cameraController: {fileID: 0}
+--- !u!114 &296768713570854749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940934207661482118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab49eb74aa65cf24e88aa6e5302d410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostingGauge: 0
+  boostIncrease: 2
 --- !u!1001 &3940934208426516763
 PrefabInstance:
   m_ObjectHideFlags: 0

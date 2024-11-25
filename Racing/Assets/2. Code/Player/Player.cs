@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
     float _v;
     Vector3 _moveVec;
     Rigidbody _rb;
+
+    [SerializeField] float _curSpeed;
 
     [Header("Player")]
     public float speed;
@@ -24,13 +27,8 @@ public class Player : MonoBehaviour
     float _boostEndTime=0f;
 
     [Header("Drift")]
-    public float driftFactor;
-    public float driftGrip;
-    public float normalDrag;
-    public float driftDrag;
-    public float angularDragValue;
-    public float angularDragNormal;
     public bool isDrifting;
+    public float driftPower;
 
     [Header("Camera")]
     public CameraControl cameraController;
@@ -40,10 +38,20 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        // 현재 속도 표시
+        _curSpeed = _rb.velocity.magnitude;
+
+        cameraController.OffsetChange(_rb.velocity.magnitude, isBoosting);
+
         PlayerBoost();
 
+        PlayerDrift();
+    }
+
+    void FixedUpdate()
+    {
         // 플레이어 움직임
         if(_canMove)
         {
@@ -53,35 +61,48 @@ public class Player : MonoBehaviour
         // 플레이어 각도 전환
         PlayerRotation();
 
-        // 플레이어 드리프트
-        PlayerDrift();
-
         // 속도 제한
         LimitSpeed();
-
-        cameraController.OffsetChange(_rb.velocity.magnitude,isBoosting);
     }
 
     void PlayerMove()
     {
+        speed = basicSpeed;
+
         _h = Input.GetAxis("Horizontal");
         _v = Input.GetAxis("Vertical");
 
         // 맵핑 적용
-        float mappedX = _h * Mathf.Sqrt(1 - 0.5f * _v * _v);
         float mappedZ = _v * Mathf.Sqrt(1 - 0.5f * _h * _h);
 
         _moveVec = transform.forward*mappedZ;
 
-        // 대각선 속도 일정하게 유지
-        if (_moveVec.magnitude > 1)
-        {
-            _moveVec.Normalize();
-        }
-
         // 이동 (AddForce를 사용하여 힘을 가함)
         float currentSpeed = isBoosting ? speed * boostPower : speed;
-        _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
+
+        if (isDrifting)
+        {
+            Vector3 driftForce = _moveVec * currentSpeed; // 기본 이동 방향 유지
+
+            if (_h < 0) // 왼쪽 방향키 입력
+            {
+                // 오른쪽으로 힘 추가
+                driftForce += transform.right*driftPower * (currentSpeed * Mathf.Abs(_h));
+            }
+            else if (_h > 0) // 오른쪽 방향키 입력
+            {
+                // 왼쪽으로 힘 추가
+                driftForce += transform.right* driftPower * (currentSpeed * -Mathf.Abs(_h));
+            }
+
+            // 드리프트 힘을 추가
+            _rb.AddForce(driftForce, ForceMode.Acceleration);
+        }
+        else
+        {
+            // 이동 (AddForce를 사용하여 힘을 가함)
+            _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
+        }
     }
 
     void PlayerRotation()
@@ -125,23 +146,10 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.H))
         {
             isDrifting = true;
-
-            Vector3 forwardVelocity=Vector3.Project(_rb.velocity,transform.forward);
-            Vector3 rightVelocity=Vector3.Project(_rb.velocity,transform.right);
-
-            _rb.velocity = forwardVelocity + rightVelocity * driftFactor;
-
-            _rb.drag = driftDrag;
-            _rb.angularDrag = angularDragValue;
-
-            speed *= driftGrip;
         }
         else
         {
-            _rb.drag = normalDrag;
-            _rb.angularDrag = angularDragNormal;
-
-            speed = basicSpeed;
+            isDrifting=false;
         }
     }
 
