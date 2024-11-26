@@ -875,10 +875,18 @@ MonoBehaviour:
   maxSteerAngle: 45
   wheelFL: {fileID: 2112254311279928804}
   wheelFR: {fileID: 4997510815214974951}
-  maxMotorTorque: 80
+  wheelRL: {fileID: 4977649863108782007}
+  wheelRR: {fileID: 7721188722908318659}
+  maxMotorTorque: 0
+  maxBrakeTorque: 150
   currentSpeed: 0
   maxSpeed: 100
-  centerOfMass: {x: 0, y: -0.2, z: 0}
+  centerOfMass: {x: 0, y: 0, z: 0}
+  isBraking: 0
+  sensorLength: 15
+  frontSensorPosition: {x: 0, y: 0.65, z: 0.5}
+  frontSideSensorPosition: 1
+  frontSensorAngle: 30
 --- !u!1 &3990361807349365848
 GameObject:
   m_ObjectHideFlags: 0
