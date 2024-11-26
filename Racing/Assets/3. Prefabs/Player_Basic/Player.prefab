@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfec2166b77ef04fbbd97ee5cca735d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _curSpeed: 0
+  curSpeed: 0
   speed: 0
   basicSpeed: 40
   maxSpeed: 60
@@ -171,7 +171,7 @@ MonoBehaviour:
   boostDuration: 2
   isBoosting: 0
   isDrifting: 0
-  driftPower: 0.5
+  driftPower: 0.4
   cameraController: {fileID: 0}
 --- !u!114 &296768713570854749
 MonoBehaviour:
@@ -185,8 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab49eb74aa65cf24e88aa6e5302d410d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 5065351467115562746}
+  gaugeValue: 5
+  driftValue: 3
   boostingGauge: 0
-  boostIncrease: 2
 --- !u!1001 &3940934208426516763
 PrefabInstance:
   m_ObjectHideFlags: 0

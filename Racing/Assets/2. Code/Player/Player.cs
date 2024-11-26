@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     Vector3 _moveVec;
     Rigidbody _rb;
 
-    [SerializeField] float _curSpeed;
+    public float curSpeed;
 
     [Header("Player")]
     public float speed;
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public float boostPower;
     public float boostDuration;
     public bool isBoosting;
+    public bool canBoost;
     float _boostEndTime=0f;
 
     [Header("Drift")]
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 현재 속도 표시
-        _curSpeed = _rb.velocity.magnitude;
+        curSpeed = _rb.velocity.magnitude;
 
         cameraController.OffsetChange(_rb.velocity.magnitude, isBoosting);
 
