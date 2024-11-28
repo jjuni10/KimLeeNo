@@ -6,7 +6,7 @@ public class CarEngine : MonoBehaviour
 {
     public Transform path;
     public float maxSteerAngle = 45f;  // 바퀴의 최대 회전 각도
-    public float turnSpeed = 3f;
+    public float turnSpeed = 4f;
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
     public WheelCollider wheelRL;

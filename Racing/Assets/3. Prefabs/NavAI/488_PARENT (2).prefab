@@ -873,7 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   maxSteerAngle: 45
-  turnSpeed: 3
+  turnSpeed: 4
   wheelFL: {fileID: 2112254311279928804}
   wheelFR: {fileID: 4997510815214974951}
   wheelRL: {fileID: 4977649863108782007}
