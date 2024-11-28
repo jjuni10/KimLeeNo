@@ -13,7 +13,6 @@ public class CarEngine : MonoBehaviour
     public WheelCollider wheelRR;
 
     public GameObject skidPrefab; // 스키드 마크 프리팹
-    private Vector3 prevSkidPos = Vector3.zero; // 이전 스키드 마크 위치
     private float skidTime; // 스키드 마크 생성 간격 타이머
 
     public float maxMotorTorque = 80f;  // 바퀴의 회전력
