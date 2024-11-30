@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
     [Header("Drift")]
     public bool isDrifting;
     public float driftPower;
+    public ParticleSystem leftTireParticle;
+    public ParticleSystem rightTireParticle;
+    ParticleSystem.EmissionModule leftEmissionModule;
+    ParticleSystem.EmissionModule rightEmissionModule;
 
     [Header("Brake")]
     public float brakeForce;
@@ -48,6 +52,9 @@ public class Player : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+
+        leftEmissionModule = leftTireParticle.emission;
+        rightEmissionModule=rightTireParticle.emission;
     }
 
     void Update()
@@ -99,6 +106,10 @@ public class Player : MonoBehaviour
 
         if (isDrifting)
         {
+            // 바퀴 파티클
+            leftEmissionModule.rateOverTime = 100;
+            rightEmissionModule.rateOverTime = 100;
+
             Vector3 driftForce = _moveVec * currentSpeed; // 기본 이동 방향 유지
 
             if (_h < 0) // 왼쪽 방향키 입력
@@ -120,6 +131,10 @@ public class Player : MonoBehaviour
         }
         else
         {
+            // 바퀴 파티클
+            leftEmissionModule.rateOverTime = 0;
+            rightEmissionModule.rateOverTime = 0;
+
             // 이동 (AddForce를 사용하여 힘을 가함)
             if (!isBraking)
             {
