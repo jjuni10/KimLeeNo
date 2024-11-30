@@ -2324,7 +2324,7 @@ GameObject:
   - component: {fileID: 7945279728840828068}
   m_Layer: 7
   m_Name: 488_PARENT (4)
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2478,6 +2478,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1ededd63e069640a4d4dfb4406a2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carType: 3
+  aggressiveCarPrefab: {fileID: 0}
+  defensiveCarPrefab: {fileID: 0}
+  speedFocusedCarPrefab: {fileID: 0}
+  balancedCarPrefab: {fileID: 0}
   path: {fileID: 0}
   maxSteerAngle: 45
   turnSpeed: 4
@@ -2496,6 +2501,7 @@ MonoBehaviour:
   frontSensorPosition: {x: 0, y: 0.65, z: 0.5}
   frontSideSensorPosition: 1
   frontSensorAngle: 30
+  detectionRange: 20
 --- !u!1 &8277446775431096165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,7 +2634,7 @@ GameObject:
   - component: {fileID: 1917506665655795597}
   m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

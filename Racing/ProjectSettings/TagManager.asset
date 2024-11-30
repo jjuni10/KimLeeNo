@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - Terrain
+  - Car
   layers:
   - Default
   - TransparentFX
