@@ -18,9 +18,11 @@ public class Player : MonoBehaviour
     public float basicSpeed;
     public float maxSpeed;
     public float turnSpeed;
+    public bool isBack;
     bool _canMove=false;
 
     [Header("Boost")]
+    public BoostGauge boostGauge;
     public float boostPower;
     public float boostDuration;
     public bool isBoosting;
@@ -30,6 +32,15 @@ public class Player : MonoBehaviour
     [Header("Drift")]
     public bool isDrifting;
     public float driftPower;
+
+    [Header("Brake")]
+    public float brakeForce;
+    public bool isBraking;
+    public Texture2D normalTexture;
+    public Texture2D brakeTexture;
+    public Renderer leftBrakeLight;
+    public Renderer rightBrakeLight;
+    public Renderer lamp;
 
     [Header("Camera")]
     public CameraControl cameraController;
@@ -49,6 +60,14 @@ public class Player : MonoBehaviour
         PlayerBoost();
 
         PlayerDrift();
+
+        PlayerBrake();
+    }
+
+    void LateUpdate()
+    {
+        // 플레이어 각도 전환
+        PlayerRotation();
     }
 
     void FixedUpdate()
@@ -58,9 +77,6 @@ public class Player : MonoBehaviour
         {
             PlayerMove();
         }
-
-        // 플레이어 각도 전환
-        PlayerRotation();
 
         // 속도 제한
         LimitSpeed();
@@ -97,13 +113,35 @@ public class Player : MonoBehaviour
             }
 
             // 드리프트 힘을 추가
-            _rb.AddForce(driftForce, ForceMode.Acceleration);
+            if (!isBraking)
+            {
+                _rb.AddForce(driftForce, ForceMode.Acceleration);
+            }
         }
         else
         {
             // 이동 (AddForce를 사용하여 힘을 가함)
-            _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
+            if (!isBraking)
+            {
+                _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
+            }
         }
+
+        if (isBraking)
+        {
+            // 브레이크 감속 적용
+            _rb.velocity += -transform.forward * brakeForce * Time.deltaTime;
+
+            // 속도가 뒤쪽으로 이동하지 않도록 제어
+            if (Vector3.Dot(_rb.velocity, -transform.forward) > 0) // 뒤로 이동 중인지 확인
+            {
+                _rb.velocity = Vector3.zero; // 완전히 정지
+                _rb.angularVelocity = Vector3.zero;
+            }
+        }
+
+        // 후진 체크
+        isBack = (_v < 0);
     }
 
     void PlayerRotation()
@@ -114,6 +152,24 @@ public class Player : MonoBehaviour
             float rotation = _h * turnSpeed * Time.deltaTime*(_v>=0?1:_v);
             Quaternion turnOffset = Quaternion.Euler(0, rotation, 0);
             _rb.MoveRotation(_rb.rotation * turnOffset);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            // Z축 회전을 0도로 설정
+            Quaternion targetRotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+            _rb.MoveRotation(targetRotation);
+
+            // Y 위치를 스케일의 2배만큼 위로 이동
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y + transform.localScale.y,
+                transform.position.z
+            );
+
+            // 외부 가해지는 힘 초기화
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
         }
     }
 
@@ -130,10 +186,16 @@ public class Player : MonoBehaviour
 
     void PlayerBoost()
     {
-        if (Input.GetKeyDown(KeyCode.F)&&!isBoosting)
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&!isBoosting)
         {
-            isBoosting = true;
-            _boostEndTime = Time.time + boostDuration;
+            if (canBoost)
+            {
+                isBoosting = true;
+                _boostEndTime = Time.time + boostDuration;
+
+                boostGauge.BoostingGauge = 0;
+                canBoost = false;
+            }
         }
 
         if(isBoosting&&Time.time>_boostEndTime)
@@ -144,13 +206,26 @@ public class Player : MonoBehaviour
 
     void PlayerDrift()
     {
-        if (Input.GetKey(KeyCode.H))
+        isDrifting = Input.GetKey(KeyCode.LeftControl) && (_h == -1 || _h == 1);
+    }
+
+    void PlayerBrake()
+    {
+        if (Input.GetKey(KeyCode.Space))
         {
-            isDrifting = true;
+            isBraking = true;
+
+            leftBrakeLight.material.mainTexture = brakeTexture;
+            rightBrakeLight.material.mainTexture = brakeTexture;
+            lamp.material.mainTexture = brakeTexture;
         }
         else
         {
-            isDrifting=false;
+            isBraking = false;
+
+            leftBrakeLight.material.mainTexture = normalTexture;
+            rightBrakeLight.material.mainTexture = normalTexture;
+            lamp.material.mainTexture = normalTexture;
         }
     }
 

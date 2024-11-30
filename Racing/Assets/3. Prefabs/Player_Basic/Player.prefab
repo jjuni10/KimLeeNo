@@ -164,14 +164,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   speed: 0
-  basicSpeed: 40
-  maxSpeed: 60
+  basicSpeed: 80
+  maxSpeed: 120
   turnSpeed: 100
+  isBack: 0
+  boostGauge: {fileID: 296768713570854749}
   boostPower: 2
   boostDuration: 2
   isBoosting: 0
+  canBoost: 0
   isDrifting: 0
   driftPower: 0.4
+  brakeForce: 10
+  isBraking: 0
+  normalTexture: {fileID: 2800000, guid: cc43a237dc1060d4fa655eb1dd2d49a5, type: 3}
+  brakeTexture: {fileID: 2800000, guid: 245ce6f6dbfe0bb48b067a93ccbe1fed, type: 3}
+  leftBrakeLight: {fileID: 2401451181041972554}
+  rightBrakeLight: {fileID: 4722197318369355585}
+  lamp: {fileID: 8439061031925555352}
   cameraController: {fileID: 0}
 --- !u!114 &296768713570854749
 MonoBehaviour:
@@ -187,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5065351467115562746}
   gaugeValue: 5
-  driftValue: 3
+  driftValue: 5
   boostingGauge: 0
 --- !u!1001 &3940934208426516763
 PrefabInstance:

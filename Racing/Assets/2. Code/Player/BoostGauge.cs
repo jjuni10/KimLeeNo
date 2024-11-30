@@ -32,6 +32,9 @@ public class BoostGauge : MonoBehaviour
 
     void GaugeUp(float velocity)
     {
-        BoostingGauge += velocity / gaugeValue * (player.isDrifting ? driftValue : 1f) * Time.deltaTime;
+        if (!player.isBack)
+        {
+            BoostingGauge += velocity / gaugeValue * (player.isDrifting ? driftValue : 1f) * Time.deltaTime;
+        }
     }
 }
