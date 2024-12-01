@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Checkpoint
+  - Path
+  - Terrain
+  - Car
+
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Object
-  - 
+  - Minimap
+  - Car
   - 
   - 
   - 
