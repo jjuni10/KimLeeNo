@@ -14,7 +14,6 @@ public class CarEngine : MonoBehaviour
     public GameObject speedFocusedCarPrefab;
     public GameObject balancedCarPrefab;
 
-    private GameObject assignedCarObject; // 선택된 자동차 오브젝트
 
     public Transform path;
     public float maxSteerAngle = 45f;  // 바퀴의 최대 회전 각도
@@ -280,7 +279,6 @@ public class CarEngine : MonoBehaviour
 
     private void Sensors()
     {
-        //if (targetCar != null) return; // 추월 중에는 센서 비활성화
 
         RaycastHit hit;
         Vector3 sensorStartPos = transform.position;
