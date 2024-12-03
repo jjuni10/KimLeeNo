@@ -167,6 +167,7 @@ public class CarEngine : MonoBehaviour
         Braking();                  // 브레이크
         LerpToSteerAngle();         // 부드러운 회전
         CreateSkidMarks();          // 스키드 마크 생성 함수 호출
+        CheckIfFlipped();           // 차량 뒤집힘 감지
     }
     private void DetectFrontCar()
     {
@@ -480,7 +481,9 @@ public class CarEngine : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, nodes[currentNode].position) < 15.0f)
         {
-            if(currentNode == nodes.Count - 1)
+            lastNodeIndex = currentNode; // 현재 노드를 마지막으로 지나친 노드로 저장
+
+            if (currentNode == nodes.Count - 1)
             {
                 currentNode = 0;
             }
@@ -582,7 +585,7 @@ public class CarEngine : MonoBehaviour
     {
         if (nodes != null && nodes.Count > 0)
         {
-            // 마지막 노드 위치로 이동
+            // 마지막으로 지나친 노드의 위치로 리스폰
             Transform lastNode = nodes[lastNodeIndex];
             transform.position = lastNode.position + Vector3.up * 1.5f; // 차량을 약간 위로 띄워 배치
             transform.rotation = lastNode.rotation;
@@ -595,12 +598,31 @@ public class CarEngine : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
 
-            // 상태 초기화
+            // 차량 상태 초기화
             currentSpeed = 0;
             targetSteerAngle = 0;
             isBraking = false;
+
+            // 현재 노드를 리스폰 지점에 맞게 설정
+            currentNode = lastNodeIndex + 1;
+
+            // 차량의 회전을 경로 방향으로 조정
+            if (nodes.Count > currentNode + 1)
+            {
+                Vector3 directionToNextNode = (nodes[currentNode + 1].position - nodes[currentNode].position).normalized;
+                transform.forward = directionToNextNode; // 경로 방향으로 차량의 방향 설정
+            }
         }
     }
+    private void CheckIfFlipped()
+    {
+        // 차량이 뒤집혔는지 감지 (X축 기울기 기준)
+        if (Vector3.Dot(transform.up, Vector3.up) < 0.1f) // 위쪽 벡터가 아래로 향하면 뒤집힌 상태
+        {
+            Respawn(); // 뒤집혔다면 리스폰
+        }
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
