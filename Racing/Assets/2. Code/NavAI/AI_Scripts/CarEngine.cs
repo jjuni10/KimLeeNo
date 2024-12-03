@@ -49,6 +49,8 @@ public class CarEngine : MonoBehaviour
     private Transform targetCar; // 앞의 자동차를 감지하기 위한 변수
     public float detectionRange = 20f; // 기본 탐지 범위
 
+    private int lastNodeIndex = 0; // 마지막으로 지나친 노드 인덱스 저장
+
 
     // Start is called before the first frame update
     private void Start()
@@ -250,15 +252,15 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                currentSpeed *= 2.0f;
+                currentSpeed *= 2.4f;
                 break;
             case CarType.Defensive:
                 break;
             case CarType.SpeedFocused:
-                currentSpeed *= 1.6f;
+                currentSpeed *= 2.0f;
                 break;
             case CarType.Balanced:
-                currentSpeed *= 1.2f;
+                currentSpeed *= 1.8f;
                 break;
         }
     }
@@ -370,10 +372,10 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                targetSteerAngle = newSteer * 0.8f; // 더 과감한 회전(기본 값 1.2)
+                targetSteerAngle = newSteer * 0.3f; // 더 과감한 회전(기본 값 1.2)
                 break;
             case CarType.Defensive:
-                targetSteerAngle = newSteer * 0.4f; // 더 안정적인 회전(기본 값 0.8)
+                targetSteerAngle = newSteer * 0.8f; // 더 안정적인 회전(기본 값 0.8)
                 break;
             case CarType.SpeedFocused:
                 targetSteerAngle = newSteer; // 기본 회전
@@ -447,17 +449,19 @@ public class CarEngine : MonoBehaviour
         {
             case CarType.Aggressive:
                 adjustedMaxMotorTorque *= 1.7f; // 원래 값 1.5
-                maxSpeed = 120f;
+                maxSpeed = 110f;
                 break;
             case CarType.Defensive:
-                adjustedMaxMotorTorque *= 1.0f; // 원래 값 0.8
+                adjustedMaxMotorTorque *= 1.4f; // 원래 값 0.8
                 maxSpeed = 100f;
                 break;
             case CarType.SpeedFocused:
                 adjustedMaxMotorTorque *= 2.0f; // 원래 값 2.0
-                maxSpeed = 150f;
+                maxSpeed = 140f;
                 break;
             case CarType.Balanced:
+                adjustedMaxMotorTorque *= 1.4f; // 원래 값 2.0
+                maxSpeed = 110f;
                 break;
         }
 
@@ -572,5 +576,37 @@ public class CarEngine : MonoBehaviour
         }
 
         skidTime += Time.deltaTime; // 간격 증가
+    }
+
+    private void Respawn()
+    {
+        if (nodes != null && nodes.Count > 0)
+        {
+            // 마지막 노드 위치로 이동
+            Transform lastNode = nodes[lastNodeIndex];
+            transform.position = lastNode.position + Vector3.up * 1.5f; // 차량을 약간 위로 띄워 배치
+            transform.rotation = lastNode.rotation;
+
+            // 물리 속도 초기화
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            // 상태 초기화
+            currentSpeed = 0;
+            targetSteerAngle = 0;
+            isBraking = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Wall"))
+        {
+            Respawn(); // 벽 충돌 시 리스폰
+        }
     }
 }

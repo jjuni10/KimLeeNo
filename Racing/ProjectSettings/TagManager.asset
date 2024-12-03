@@ -7,7 +7,7 @@ TagManager:
   - Path
   - Terrain
   - Car
-
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Minimap
-  - Car
+  - 
+  - 
   - 
   - 
   - 
