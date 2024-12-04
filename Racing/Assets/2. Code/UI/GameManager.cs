@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro; // TextMeshPro 사용
 using UnityEngine.SceneManagement; // SceneManager 추가
+using System.Reflection.Emit;
 
 public class GameManager : MonoBehaviour
 {
