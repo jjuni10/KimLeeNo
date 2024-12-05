@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            PlayerNotOnGround();
+            //PlayerNotOnGround();
         }
     }
 

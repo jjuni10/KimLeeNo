@@ -9795,7 +9795,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 3000
   m_Drag: 0
-  m_AngularDrag: 1
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -9826,8 +9826,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   speed: 0
-  basicSpeed: 25
-  maxSpeed: 60
+  basicSpeed: 40
+  maxSpeed: 80
   turnSpeed: 100
   isBack: 0
   boostGauge: {fileID: 296768713570854749}
