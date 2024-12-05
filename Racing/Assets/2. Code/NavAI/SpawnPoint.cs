@@ -33,7 +33,18 @@ public class SpawnPoint : MonoBehaviour
         {
             int randomSpawnIndex = spawnIndices[i];
             Transform spawnPoint = spawnPoints[randomSpawnIndex];
-            Instantiate(rasingCars[i], spawnPoint.position, spawnPoint.rotation, spawnPoint);
+            GameObject spawnCar=Instantiate(rasingCars[i], spawnPoint.position, spawnPoint.rotation, spawnPoint);
+
+            // 플레이어 소환 시
+            if (rasingCars[i].tag == "Player")
+            {
+                GameManager.Instance.cameraControl.target = spawnCar.transform;
+                GameManager.Instance.vehicleRigidbody=spawnCar.GetComponent<Rigidbody>();
+                GameManager.Instance.playerSpeedDisplay.playerRigidbody=spawnCar.GetComponent<Rigidbody>();
+                GameManager.Instance.countdownManager.vehicleController=spawnCar.GetComponent<MonoBehaviour>();
+                GameManager.Instance.countdownManager.vehicleRigidbody = spawnCar.GetComponent<Rigidbody>();
+
+            }
         }
 
     }

@@ -16,6 +16,9 @@ public class LapCounter : MonoBehaviour
 
     private void Start()
     {
+        lapText = GameManager.Instance.lapText;
+        lapTimeText = GameManager.Instance.lapTimeText;
+        
         lapTimes = new float[totalLaps];  // 총 랩 수만큼 배열 생성
         lapStartTime = Time.time;         // 첫 랩 시작 시간 초기화
         UpdateLapText();
