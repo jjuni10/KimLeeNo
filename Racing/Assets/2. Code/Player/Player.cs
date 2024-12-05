@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     [Header("Drift")]
     public bool isDrifting;
     public float driftPower;
+    public float particleOverTime;
     public ParticleSystem leftTireParticle;
     public ParticleSystem rightTireParticle;
     ParticleSystem.EmissionModule leftEmissionModule;
@@ -49,12 +50,20 @@ public class Player : MonoBehaviour
     [Header("Camera")]
     public CameraControl cameraController;
 
+    [Header("Respawn")]
+    public ReverseDetection respawnPos;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
 
         leftEmissionModule = leftTireParticle.emission;
         rightEmissionModule=rightTireParticle.emission;
+    }
+
+    void Start()
+    {
+        cameraController = GameManager.Instance.cameraControl;
     }
 
     void Update()
@@ -75,6 +84,9 @@ public class Player : MonoBehaviour
     {
         // 플레이어 각도 전환
         PlayerRotation();
+
+        // 속도 제한
+        LimitSpeed();
     }
 
     void FixedUpdate()
@@ -84,9 +96,10 @@ public class Player : MonoBehaviour
         {
             PlayerMove();
         }
-
-        // 속도 제한
-        LimitSpeed();
+        else
+        {
+            //PlayerNotOnGround();
+        }
     }
 
     void PlayerMove()
@@ -107,8 +120,8 @@ public class Player : MonoBehaviour
         if (isDrifting)
         {
             // 바퀴 파티클
-            leftEmissionModule.rateOverTime = 100;
-            rightEmissionModule.rateOverTime = 100;
+            leftEmissionModule.rateOverTime = particleOverTime*curSpeed;
+            rightEmissionModule.rateOverTime = particleOverTime*curSpeed;
 
             Vector3 driftForce = _moveVec * currentSpeed; // 기본 이동 방향 유지
 
@@ -171,16 +184,18 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            Vector3 respawnVec = respawnPos.waypoints[respawnPos.currentWaypointIndex].position;
+
             // Z축 회전을 0도로 설정
             Quaternion targetRotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
             _rb.MoveRotation(targetRotation);
 
             // Y 위치를 스케일의 2배만큼 위로 이동
             transform.position = new Vector3(
-                transform.position.x,
-                transform.position.y + transform.localScale.y,
-                transform.position.z
-            );
+                respawnVec.x,
+                respawnVec.y + transform.localScale.y * 2,
+                respawnVec.z
+            ) ;
 
             // 외부 가해지는 힘 초기화
             _rb.velocity = Vector3.zero;
@@ -222,6 +237,11 @@ public class Player : MonoBehaviour
     void PlayerDrift()
     {
         isDrifting = Input.GetKey(KeyCode.LeftControl) && (_h == -1 || _h == 1);
+
+        if (!Input.GetKey(KeyCode.LeftControl))
+        {
+            isDrifting = false;
+        }
     }
 
     void PlayerBrake()
@@ -242,6 +262,13 @@ public class Player : MonoBehaviour
             rightBrakeLight.material.mainTexture = normalTexture;
             lamp.material.mainTexture = normalTexture;
         }
+    }
+
+    // 공중에 떴을 때 회전 제어
+    void PlayerNotOnGround()
+    {
+        Vector3 stabilizationTorque = new Vector3(-_rb.angularVelocity.x, 0, -_rb.angularVelocity.z);
+        _rb.AddTorque(stabilizationTorque, ForceMode.VelocityChange);
     }
 
     void OnTriggerStay(Collider other)

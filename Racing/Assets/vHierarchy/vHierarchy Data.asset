@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 33348a96335b431468ac77b179165ff4
+    - acea87cdc4a2a7c42ad297ad1ad9bf8b
     values:
     - goDatas_byGlobalId:
         keys:
@@ -33,4 +34,496 @@ MonoBehaviour:
         - colorIndex: 2
           iconNameOrGuid: MeshCollider Icon
         - colorIndex: 6
+          iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3592042398772086104-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-411660474-0
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3940934207661482118-422710746
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6363649077820573224-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-19342287-0
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8868403476525674592-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13304190722474403909-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2531345039891775109-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16353765919061632484-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12745076428373307647-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7614651530319410574-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5748928070518259719-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8247202569707176559-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16385415360309468770-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12846282710586001706-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11949820040384820187-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15621145884803857668-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17910920502636678121-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-573541703917433857-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10087964115545257438-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4209062637244908899-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-18141536635477558783-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15813589851853955057-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13286031239888370004-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4097638192735467742-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7012681455961095907-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16484284458764047128-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7259101259173839365-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8672913173093888310-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15407773400294466896-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14017451471414653077-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4917420285585135531-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15984311558581028359-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3178466379169482711-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2764948992911321619-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1258452465871799090-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14653588178698804872-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3525773204880997215-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15297215168668101340-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-18145659596222828764-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10158300997405243884-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17364006633156043304-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5724945394612786746-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1624494464640557743-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17212770589393503433-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8710244129326396167-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10215415921380078380-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7974690017755651691-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3620335152467531675-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17632072223241309900-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7690281520680912091-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5821479333762536749-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3221374429917871183-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15515812194128985477-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12784833495749866697-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-852629521379243055-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8531001104437013055-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2231301882063436458-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6795794995014193256-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13587130764809900667-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8519227726408631555-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3043017116622282513-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5682490666454689042-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16698843081563784379-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17193471107764920015-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10084408172577306923-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9460033158209709376-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9759520147686084584-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2946470500897463182-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5278403089728006366-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2997231659098692097-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10933778026643135093-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4277485899090770288-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11854746297463247780-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11245194332278338311-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14139045222968636820-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5496748601352521706-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12425195629933839874-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4944652242521828508-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12747539534833389219-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4306275627896605163-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-44397320481992484-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5544494766948741646-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16906630736085340265-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7580195184720173860-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1172860393825618932-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3416540001065972835-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1343416530482479023-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17164321882155929141-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-540925274085583823-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3837825691614101729-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-754328737250183951-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7693703456629274231-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9504757757307440771-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-424912773179047025-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11168736565422710765-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16030701592151530386-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9477846447924085405-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14255634325460521355-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3404190960035242003-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16074865056716969144-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14686817551195589833-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7349192038828785241-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17503212003604249073-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7413525071469681581-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12494291657342805662-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15933929995430756399-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-15647967073312104654-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8617154996211164218-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5901186342777989442-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10996538796376392478-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-24696538799702096-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5746287061703768536-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9518988279338513802-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3220098672711012923-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17841575682644079625-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16365637520536733028-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6108864555927720458-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-3383557178313162371-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17418361707857305307-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5392992810974564445-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17961698754917116695-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1493807261422745509-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4816339929732613132-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16324797773687071649-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12437270946747677836-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9566211262603035497-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6320019100197589787-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6260731775167383527-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8613777669281468785-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13180838871331450235-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-254021140212324486-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10501872170182265966-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13150037406025749436-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2736444146146401664-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16094343177086168937-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5823149515637158069-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6830997751021304395-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12912757552051139737-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8263580244234866278-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14111103329936156680-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4226942490922778107-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-8023609303387036262-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2588282458238681048-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10588798654295827567-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9545482760660550167-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-7399119405073793617-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-9983347375046726420-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-6000212110949291788-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16649911458515063645-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-16888657824113473543-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14876598706862835309-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-2622931757238352397-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-12579900697111796001-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-4063200477797879374-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-13752020375321691955-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-10110808648350429854-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11363306311265638546-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-14150068582299141305-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-5318371451651806747-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-11948627246681609786-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-1204136062220391503-321642989
+        - globalObjectIdString: GlobalObjectId_V1-2-acea87cdc4a2a7c42ad297ad1ad9bf8b-17135515432313292526-321642989
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: MeshCollider Icon
+        - colorIndex: 1
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 2
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 2
+          iconNameOrGuid: MeshCollider Icon
+        - colorIndex: 6
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
           iconNameOrGuid: 
