@@ -2,14 +2,42 @@ using System.Collections;
 using UnityEngine;
 using TMPro; // TextMeshPro 사용
 using UnityEngine.SceneManagement; // SceneManager 추가
+using System.Reflection.Emit;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+
+    [Header("Object")]
+    public CameraControl cameraControl;
+    public PlayerSpeedDisplay playerSpeedDisplay;
+    public CountdownManager countdownManager;
+    public WaypointsManager waypointsManager;
+    public Image reverseImage;
+    public TextMeshProUGUI lapText;
+    public TextMeshProUGUI lapTimeText;
+
+    [Header ("NMS")]
     public GameObject pausePanel;          // 일시정지 패널 연결
     public MonoBehaviour vehicleController; // 차량 제어 스크립트
     public Rigidbody vehicleRigidbody;     // 차량 Rigidbody
 
     private bool isPaused = false;         // 게임이 일시정지 상태인지 추적
+
+    public static GameManager Instance
+    {
+        get { return _instance; }
+        set { }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {

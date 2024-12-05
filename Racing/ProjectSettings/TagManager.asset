@@ -7,7 +7,7 @@ TagManager:
   - Path
   - Terrain
   - Car
-  - Wall
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -15,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Object
   - 
   - 
   - 
