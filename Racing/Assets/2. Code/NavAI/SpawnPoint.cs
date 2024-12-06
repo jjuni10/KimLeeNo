@@ -36,6 +36,7 @@ public class SpawnPoint : MonoBehaviour
             Instantiate(rasingCars[i], spawnPoint.position, spawnPoint.rotation, spawnPoint);
         }
 
+
     }
     void SufflePos(System.Collections.Generic.List<int> list)
     {

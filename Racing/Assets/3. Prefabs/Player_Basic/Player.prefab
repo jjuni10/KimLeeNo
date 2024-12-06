@@ -9673,6 +9673,8 @@ GameObject:
   - component: {fileID: 4499024546746150642}
   - component: {fileID: 5065351467115562746}
   - component: {fileID: 296768713570854749}
+  - component: {fileID: 4513101266818487670}
+  - component: {fileID: 1500714488345742860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -9823,8 +9825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curSpeed: 0
+  respawnPos: {fileID: 0}
   speed: 0
-  basicSpeed: 80
+  basicSpeed: 40
   maxSpeed: 120
   turnSpeed: 100
   isBack: 0
@@ -9833,10 +9836,15 @@ MonoBehaviour:
   boostDuration: 2
   isBoosting: 0
   canBoost: 0
+  audioSource: {fileID: 0}
+  boostSound: {fileID: 8300000, guid: 6284a3ba500cd3f4886a173d48bd94ff, type: 3}
   isDrifting: 0
   driftPower: 0.4
+  particleOverTime: 0
   leftTireParticle: {fileID: 8492139671447210238}
   rightTireParticle: {fileID: 4708504826846328019}
+  audio: {fileID: 0}
+  driftSound: {fileID: 8300000, guid: 8872c9a2fefc4604c89681a48c50874e, type: 3}
   brakeForce: 10
   isBraking: 0
   normalTexture: {fileID: 2800000, guid: cc43a237dc1060d4fa655eb1dd2d49a5, type: 3}
@@ -9861,6 +9869,117 @@ MonoBehaviour:
   gaugeValue: 5
   driftValue: 5
   boostingGauge: 0
+--- !u!114 &4513101266818487670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940934207661482118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782b7dd4478fd1347b4736f960aba7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lapText: {fileID: 0}
+  lapTimeText: {fileID: 0}
+  checkpoint: {fileID: 0}
+  totalLaps: 4
+--- !u!114 &1500714488345742860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940934207661482118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2f62eddecc6e0499e11dd0d33b953e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentWaypointIndex: 0
+  reverseImage: {fileID: 0}
+  reverseThreshold: -0.4
+  waypointThreshold: 10
 --- !u!1001 &3940934208426516763
 PrefabInstance:
   m_ObjectHideFlags: 0
