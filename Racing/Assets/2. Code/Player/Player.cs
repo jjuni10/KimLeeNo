@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     public bool isBoosting;
     public bool canBoost;
     float _boostEndTime=0f;
-    public AudioSource audioSource;  // ¿Àµğ¿À ¼Ò½º¸¦ ¿¬°áÇÒ º¯¼ö
-    public AudioClip boostSound;     // ºÎ½ºÆ® ¼Ò¸®¸¦ ¿¬°áÇÒ º¯¼ö
+    public AudioSource audioSource;  // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ë¥¼ ì—°ê²°í•  ë³€ìˆ˜
+    public AudioClip boostSound;     // ë¶€ìŠ¤íŠ¸ ì†Œë¦¬ë¥¼ ì—°ê²°í•  ë³€ìˆ˜
 
     [Header("Drift")]
     public bool isDrifting;
@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public ParticleSystem rightTireParticle;
     ParticleSystem.EmissionModule leftEmissionModule;
     ParticleSystem.EmissionModule rightEmissionModule;
-    public AudioSource audio; // AudioSource ¿¬°á
-    public AudioClip driftSound;    // µå¸®ÇÁÆ® ¼Ò¸®
+    public AudioSource audio; // AudioSource ì—°ê²°
+    public AudioClip driftSound;    // ë“œë¦¬í”„íŠ¸ ì†Œë¦¬
 
 
     [Header("Brake")]
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // ÇöÀç ¼Óµµ Ç¥½Ã
+        // í˜„ì¬ ì†ë„ í‘œì‹œ
         curSpeed = _rb.velocity.magnitude;
 
         cameraController.OffsetChange(_rb.velocity.magnitude, isBoosting);
@@ -78,19 +78,22 @@ public class Player : MonoBehaviour
 
     void LateUpdate()
     {
-        // ÇÃ·¹ÀÌ¾î °¢µµ ÀüÈ¯
+        // í”Œë ˆì´ì–´ ê°ë„ ì „í™˜
         PlayerRotation();
+
+        // ì†ë„ ì œí•œ
+        LimitSpeed();
     }
 
     void FixedUpdate()
     {
-        // ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÓ
+        // í”Œë ˆì´ì–´ ì›€ì§ì„
         if(_canMove)
         {
             PlayerMove();
         }
 
-        // ¼Óµµ Á¦ÇÑ
+        // ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
         LimitSpeed();
     }
 
@@ -101,34 +104,34 @@ public class Player : MonoBehaviour
         _h = Input.GetAxis("Horizontal");
         _v = Input.GetAxis("Vertical");
 
-        // ¸ÊÇÎ Àû¿ë
+        // ë§µí•‘ ì ìš©
         float mappedZ = _v * Mathf.Sqrt(1 - 0.5f * _h * _h);
 
         _moveVec = transform.forward*mappedZ;
 
-        // ÀÌµ¿ (AddForce¸¦ »ç¿ëÇÏ¿© ÈûÀ» °¡ÇÔ)
+        // ì´ë™ (AddForceë¥¼ ì‚¬ìš©í•˜ì—¬ í˜ì„ ê°€í•¨)
         float currentSpeed = isBoosting ? speed * boostPower : speed;
 
         if (isDrifting)
         {
-            // ¹ÙÄû ÆÄÆ¼Å¬
-            leftEmissionModule.rateOverTime = 100;
-            rightEmissionModule.rateOverTime = 100;
+            // ë°”í€´ íŒŒí‹°í´
+            leftEmissionModule.rateOverTime = particleOverTime*curSpeed;
+            rightEmissionModule.rateOverTime = particleOverTime*curSpeed;
 
-            Vector3 driftForce = _moveVec * currentSpeed; // ±âº» ÀÌµ¿ ¹æÇâ À¯Áö
+            Vector3 driftForce = _moveVec * currentSpeed; // ê¸°ë³¸ ì´ë™ ë°©í–¥ ìœ ì§€
 
-            if (_h < 0) // ¿ŞÂÊ ¹æÇâÅ° ÀÔ·Â
+            if (_h < 0) // ì™¼ìª½ ë°©í–¥í‚¤ ì…ë ¥
             {
-                // ¿À¸¥ÂÊÀ¸·Î Èû Ãß°¡
+                // ì˜¤ë¥¸ìª½ìœ¼ë¡œ í˜ ì¶”ê°€
                 driftForce += transform.right*driftPower * (currentSpeed * Mathf.Abs(_h));
             }
-            else if (_h > 0) // ¿À¸¥ÂÊ ¹æÇâÅ° ÀÔ·Â
+            else if (_h > 0) // ì˜¤ë¥¸ìª½ ë°©í–¥í‚¤ ì…ë ¥
             {
-                // ¿ŞÂÊÀ¸·Î Èû Ãß°¡
+                // ì™¼ìª½ìœ¼ë¡œ í˜ ì¶”ê°€
                 driftForce += transform.right* driftPower * (currentSpeed * -Mathf.Abs(_h));
             }
 
-            // µå¸®ÇÁÆ® ÈûÀ» Ãß°¡
+            // ë“œë¦¬í”„íŠ¸ í˜ì„ ì¶”ê°€
             if (!isBraking)
             {
                 _rb.AddForce(driftForce, ForceMode.Acceleration);
@@ -136,11 +139,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // ¹ÙÄû ÆÄÆ¼Å¬
+            // ë°”í€´ íŒŒí‹°í´
             leftEmissionModule.rateOverTime = 0;
             rightEmissionModule.rateOverTime = 0;
 
-            // ÀÌµ¿ (AddForce¸¦ »ç¿ëÇÏ¿© ÈûÀ» °¡ÇÔ)
+            // ì´ë™ (AddForceë¥¼ ì‚¬ìš©í•˜ì—¬ í˜ì„ ê°€í•¨)
             if (!isBraking)
             {
                 _rb.AddForce(_moveVec * currentSpeed, ForceMode.Acceleration);
@@ -149,24 +152,24 @@ public class Player : MonoBehaviour
 
         if (isBraking)
         {
-            // ºê·¹ÀÌÅ© °¨¼Ó Àû¿ë
+            // ë¸Œë ˆì´í¬ ê°ì† ì ìš©
             _rb.velocity += -transform.forward * brakeForce * Time.deltaTime;
 
-            // ¼Óµµ°¡ µÚÂÊÀ¸·Î ÀÌµ¿ÇÏÁö ¾Êµµ·Ï Á¦¾î
-            if (Vector3.Dot(_rb.velocity, -transform.forward) > 0) // µÚ·Î ÀÌµ¿ ÁßÀÎÁö È®ÀÎ
+            // ì†ë„ê°€ ë’¤ìª½ìœ¼ë¡œ ì´ë™í•˜ì§€ ì•Šë„ë¡ ì œì–´
+            if (Vector3.Dot(_rb.velocity, -transform.forward) > 0) // ë’¤ë¡œ ì´ë™ ì¤‘ì¸ì§€ í™•ì¸
             {
-                _rb.velocity = Vector3.zero; // ¿ÏÀüÈ÷ Á¤Áö
+                _rb.velocity = Vector3.zero; // ì™„ì „íˆ ì •ì§€
                 _rb.angularVelocity = Vector3.zero;
             }
         }
 
-        // ÈÄÁø Ã¼Å©
+        // í›„ì§„ ì²´í¬
         isBack = (_v < 0);
     }
 
     void PlayerRotation()
     {
-        // ÀÌµ¿ ¹æÇâÀ¸·Î È¸Àü
+        // ì´ë™ ë°©í–¥ìœ¼ë¡œ íšŒì „
         if (Mathf.Abs(_h)>0.1f)
         {
             float rotation = _h * turnSpeed * Time.deltaTime*(_v>=0?1:_v);
@@ -176,18 +179,20 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            // ZÃà È¸ÀüÀ» 0µµ·Î ¼³Á¤
+            Vector3 respawnVec = respawnPos.waypoints[respawnPos.currentWaypointIndex].position;
+
+            // Zì¶• íšŒì „ì„ 0ë„ë¡œ ì„¤ì •
             Quaternion targetRotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
             _rb.MoveRotation(targetRotation);
 
-            // Y À§Ä¡¸¦ ½ºÄÉÀÏÀÇ 2¹è¸¸Å­ À§·Î ÀÌµ¿
+            // Y ìœ„ì¹˜ë¥¼ ìŠ¤ì¼€ì¼ì˜ 2ë°°ë§Œí¼ ìœ„ë¡œ ì´ë™
             transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y + transform.localScale.y,
                 transform.position.z
             );
 
-            // ¿ÜºÎ °¡ÇØÁö´Â Èû ÃÊ±âÈ­
+            // ì™¸ë¶€ ê°€í•´ì§€ëŠ” í˜ ì´ˆê¸°í™”
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
         }
@@ -195,7 +200,7 @@ public class Player : MonoBehaviour
 
     void LimitSpeed()
     {
-        // ÇöÀç ¼Óµµ¸¦ °¡Á®¿Í¼­ ÃÖ´ë ¼Óµµ¸¦ ³ÑÁö ¾Êµµ·Ï Á¦ÇÑ
+        // í˜„ì¬ ì†ë„ë¥¼ ê°€ì ¸ì™€ì„œ ìµœëŒ€ ì†ë„ë¥¼ ë„˜ì§€ ì•Šë„ë¡ ì œí•œ
         float currentMaxSpeed=isBoosting?maxSpeed*boostPower:maxSpeed;
 
         if (_rb.velocity.magnitude > maxSpeed)
@@ -210,7 +215,7 @@ public class Player : MonoBehaviour
         {
             if (canBoost)
             {
-                // ¼Ò¸® Àç»ı
+                // ì†Œë¦¬ ì¬ìƒ
                 PlayBoostSound();
 
                 isBoosting = true;
@@ -227,7 +232,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // ºÎ½ºÆ® ¼Ò¸®¸¦ Àç»ıÇÏ´Â ÇÔ¼ö
+    // ë¶€ìŠ¤íŠ¸ ì†Œë¦¬ë¥¼ ì¬ìƒí•˜ëŠ” í•¨ìˆ˜
     void PlayBoostSound()
     {
         if (boostSound != null && audioSource != null)
@@ -238,7 +243,7 @@ public class Player : MonoBehaviour
 
     void PlayerDrift()
     {
-        // µå¸®ÇÁÆ® ÀÔ·ÂÀ» Ã¼Å©
+        // ë“œë¦¬í”„íŠ¸ ì…ë ¥ì„ ì²´í¬
         bool isDriftInput = Input.GetKey(KeyCode.LeftControl) && (_h == -1 || _h == 1);
 
         if (isDriftInput && !isDrifting)
@@ -253,25 +258,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    // µå¸®ÇÁÆ® ¼Ò¸®¸¦ Àç»ıÇÏ´Â ÇÔ¼ö
+    // ë“œë¦¬í”„íŠ¸ ì†Œë¦¬ë¥¼ ì¬ìƒí•˜ëŠ” í•¨ìˆ˜
     void StartDriftSound()
     {
         if (audioSource != null && driftSound != null)
         {
-            audioSource.clip = driftSound; // µå¸®ÇÁÆ® ¼Ò¸® ¼³Á¤
-            if (!audioSource.isPlaying)   // ÀÌ¹Ì Àç»ı ÁßÀÌ ¾Æ´Ï¸é Àç»ı
+            audioSource.clip = driftSound; // ë“œë¦¬í”„íŠ¸ ì†Œë¦¬ ì„¤ì •
+            if (!audioSource.isPlaying)   // ì´ë¯¸ ì¬ìƒ ì¤‘ì´ ì•„ë‹ˆë©´ ì¬ìƒ
             {
                 audioSource.Play();
             }
         }
     }
 
-    // µå¸®ÇÁÆ® ¼Ò¸® Á¤Áö
+    // ë“œë¦¬í”„íŠ¸ ì†Œë¦¬ ì •ì§€
     void StopDriftSound()
     {
         if (audioSource != null && audioSource.isPlaying)
         {
-            audioSource.Stop(); // ¼Ò¸® Á¤Áö
+            audioSource.Stop(); // ì†Œë¦¬ ì •ì§€
         }
     }
 
@@ -295,6 +300,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ê³µì¤‘ì— ë–´ì„ ë•Œ íšŒì „ ì œì–´
+    void PlayerNotOnGround()
+    {
+        Vector3 stabilizationTorque = new Vector3(-_rb.angularVelocity.x, 0, -_rb.angularVelocity.z);
+        _rb.AddTorque(stabilizationTorque, ForceMode.VelocityChange);
+    }
+    
     void OnTriggerStay(Collider other)
     {
         _canMove = true;
