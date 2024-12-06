@@ -22,6 +22,7 @@ public class BoostGauge : MonoBehaviour
             {
                 player.canBoost = true;
             }
+
         }
     }
 

@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     public bool isBoosting;
     public bool canBoost;
     float _boostEndTime=0f;
+    public AudioSource audioSource;  // 오디오 소스를 연결할 변수
+    public AudioClip boostSound;     // 부스트 소리를 연결할 변수
 
     [Header("Drift")]
     public bool isDrifting;
@@ -36,6 +38,9 @@ public class Player : MonoBehaviour
     public ParticleSystem rightTireParticle;
     ParticleSystem.EmissionModule leftEmissionModule;
     ParticleSystem.EmissionModule rightEmissionModule;
+    public AudioSource audio; // AudioSource 연결
+    public AudioClip driftSound;    // 드리프트 소리
+
 
     [Header("Brake")]
     public float brakeForce;
@@ -201,10 +206,13 @@ public class Player : MonoBehaviour
 
     void PlayerBoost()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)&&!isBoosting)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isBoosting)
         {
             if (canBoost)
             {
+                // 소리 재생
+                PlayBoostSound();
+
                 isBoosting = true;
                 _boostEndTime = Time.time + boostDuration;
 
@@ -213,15 +221,58 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(isBoosting&&Time.time>_boostEndTime)
+        if (isBoosting && Time.time > _boostEndTime)
         {
-            isBoosting=false;
+            isBoosting = false;
+        }
+    }
+
+    // 부스트 소리를 재생하는 함수
+    void PlayBoostSound()
+    {
+        if (boostSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(boostSound);
         }
     }
 
     void PlayerDrift()
     {
-        isDrifting = Input.GetKey(KeyCode.LeftControl) && (_h == -1 || _h == 1);
+        // 드리프트 입력을 체크
+        bool isDriftInput = Input.GetKey(KeyCode.LeftControl) && (_h == -1 || _h == 1);
+
+        if (isDriftInput && !isDrifting)
+        {
+            StartDriftSound();
+            isDrifting = true;
+        }
+        else if (!isDriftInput && isDrifting)
+        {
+            StopDriftSound();
+            isDrifting = false;
+        }
+    }
+
+    // 드리프트 소리를 재생하는 함수
+    void StartDriftSound()
+    {
+        if (audioSource != null && driftSound != null)
+        {
+            audioSource.clip = driftSound; // 드리프트 소리 설정
+            if (!audioSource.isPlaying)   // 이미 재생 중이 아니면 재생
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+    // 드리프트 소리 정지
+    void StopDriftSound()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // 소리 정지
+        }
     }
 
     void PlayerBrake()

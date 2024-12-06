@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro; // TextMeshPro 사용
 using UnityEngine.SceneManagement; // SceneManager 추가
-using System.Reflection.Emit;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class GameManager : MonoBehaviour
     public MonoBehaviour vehicleController; // 차량 제어 스크립트
     public Rigidbody vehicleRigidbody;     // 차량 Rigidbody
 
+    private AudioSource[] audioSources;    // 모든 AudioSource 저장
     private bool isPaused = false;         // 게임이 일시정지 상태인지 추적
 
     private void Start()
@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
         {
             vehicleRigidbody.isKinematic = true;
         }
+
+        // 모든 AudioSource 가져오기
+        audioSources = FindObjectsOfType<AudioSource>();
     }
 
     private void Update()
@@ -58,6 +61,15 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // 마우스 커서 해제
         Cursor.visible = true; // 마우스 커서 보이기
         isPaused = true; // 일시정지 상태 설정
+
+        // 모든 오디오 정지
+        foreach (var source in audioSources)
+        {
+            if (source.isPlaying)
+            {
+                source.Pause();
+            }
+        }
     }
 
     private void ResumeGame()
@@ -67,6 +79,15 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 잠금
         Cursor.visible = false; // 마우스 커서 숨기기
         isPaused = false; // 일시정지 상태 해제
+
+        // 모든 오디오 재개
+        foreach (var source in audioSources)
+        {
+            if (source != null)
+            {
+                source.UnPause();
+            }
+        }
     }
 
     // Continue 버튼 클릭 시 호출될 함수
