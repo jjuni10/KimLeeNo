@@ -5,7 +5,7 @@ using System.Collections;
 public class ReverseDetection : MonoBehaviour
 {
     public Transform[] waypoints; // Waypoints 배열
-    private int currentWaypointIndex = 0; // 현재 Waypoint 인덱스
+    public int currentWaypointIndex = 0; // 현재 Waypoint 인덱스
     private Transform car; // 차량 Transform
     private bool isReversing = false; // 역주행 상태를 추적하는 변수
     private Coroutine reverseCoroutine; // 역주행 텍스트를 지연시키는 코루틴 참조

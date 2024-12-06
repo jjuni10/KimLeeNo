@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     Rigidbody _rb;
 
     public float curSpeed;
+    public ReverseDetection respawnPos;
 
     [Header("Player")]
     public float speed;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     [Header("Drift")]
     public bool isDrifting;
     public float driftPower;
+    public float particleOverTime;
     public ParticleSystem leftTireParticle;
     public ParticleSystem rightTireParticle;
     ParticleSystem.EmissionModule leftEmissionModule;
