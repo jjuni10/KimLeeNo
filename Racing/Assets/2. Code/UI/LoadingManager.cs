@@ -10,7 +10,7 @@ public class LoadingManager : MonoBehaviour
 
     private System.Collections.IEnumerator LoadTargetScene()
     {
-        yield return new WaitForSeconds(4f); 
+        yield return new WaitForSeconds(3f); 
         SceneManager.LoadScene(SceneLoader.TargetSceneName); // 저장된 목표 씬으로 이동
     }
 }

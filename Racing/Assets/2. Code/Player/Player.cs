@@ -68,6 +68,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        CreateCar();
+
         cameraController = GameManager.Instance.cameraControl;
         this.GetComponent<ReverseDetection>().carName = "Player";
     }
@@ -317,6 +319,12 @@ public class Player : MonoBehaviour
     {
         Vector3 stabilizationTorque = new Vector3(-_rb.angularVelocity.x, 0, -_rb.angularVelocity.z);
         _rb.AddTorque(stabilizationTorque, ForceMode.VelocityChange);
+    }
+
+    void CreateCar()
+    {
+        audioSource = SoundManager.Instance.boostAudio;
+        audio = SoundManager.Instance.driftAudio;
     }
 
     void OnTriggerStay(Collider other)

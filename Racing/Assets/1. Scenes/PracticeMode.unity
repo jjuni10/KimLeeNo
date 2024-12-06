@@ -10044,6 +10044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3940934207661482118, guid: f35c161299009be49a22f88d31232588, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5065351467115562746, guid: f35c161299009be49a22f88d31232588, type: 3}
       propertyPath: audio
       value: 
@@ -12427,116 +12431,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3940934207661482116, guid: f35c161299009be49a22f88d31232588, type: 3}
   m_PrefabInstance: {fileID: 422710746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &692448910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422710747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2f62eddecc6e0499e11dd0d33b953e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 799896641}
-  - {fileID: 1407982144}
-  - {fileID: 1985280467}
-  - {fileID: 836896404}
-  - {fileID: 256004049}
-  - {fileID: 108788604}
-  - {fileID: 1928769766}
-  - {fileID: 1408085614}
-  - {fileID: 831984881}
-  - {fileID: 43965693}
-  - {fileID: 1183643356}
-  - {fileID: 100461724}
-  - {fileID: 1802181166}
-  - {fileID: 1467114627}
-  - {fileID: 805149143}
-  - {fileID: 816568906}
-  - {fileID: 1445806337}
-  - {fileID: 755679157}
-  - {fileID: 1915595927}
-  - {fileID: 1051400574}
-  - {fileID: 1927362483}
-  - {fileID: 1557165315}
-  - {fileID: 780949719}
-  - {fileID: 1962348086}
-  - {fileID: 1806214893}
-  - {fileID: 106860052}
-  - {fileID: 879614341}
-  - {fileID: 1781448154}
-  - {fileID: 1430723480}
-  - {fileID: 780374107}
-  - {fileID: 708740221}
-  - {fileID: 721590941}
-  - {fileID: 1228296493}
-  - {fileID: 1539043418}
-  - {fileID: 1158186679}
-  - {fileID: 1391858707}
-  - {fileID: 41029048}
-  - {fileID: 393296798}
-  - {fileID: 513882396}
-  - {fileID: 465141159}
-  - {fileID: 1032127095}
-  - {fileID: 1629296795}
-  - {fileID: 1867340305}
-  - {fileID: 1435394707}
-  - {fileID: 2039785998}
-  - {fileID: 651497827}
-  - {fileID: 237411305}
-  - {fileID: 1211924813}
-  - {fileID: 1805029637}
-  - {fileID: 1365188767}
-  - {fileID: 2133278589}
-  - {fileID: 1076655295}
-  - {fileID: 980418682}
-  - {fileID: 744511185}
-  - {fileID: 1410168625}
-  - {fileID: 1065924061}
-  - {fileID: 1487521249}
-  - {fileID: 1118262864}
-  - {fileID: 1941117879}
-  - {fileID: 866815365}
-  - {fileID: 1206628341}
-  - {fileID: 542256874}
-  - {fileID: 1301391647}
-  - {fileID: 1019813763}
-  - {fileID: 1115990877}
-  - {fileID: 560564454}
-  - {fileID: 447574174}
-  - {fileID: 571180802}
-  - {fileID: 2038649262}
-  - {fileID: 1830472874}
-  - {fileID: 670297521}
-  - {fileID: 1174645255}
-  - {fileID: 912543035}
-  - {fileID: 1859428082}
-  - {fileID: 1105465017}
-  - {fileID: 1252480535}
-  - {fileID: 874352296}
-  - {fileID: 799021043}
-  reverseImage: {fileID: 859160891}
-  reverseThreshold: -0.4
-  waypointThreshold: 10
---- !u!114 &692448911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422710747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782b7dd4478fd1347b4736f960aba7c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lapText: {fileID: 1663008160}
-  lapTimeText: {fileID: 247175306}
-  checkpoint: {fileID: 1331141859}
-  totalLaps: 4
 --- !u!54 &692448912 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 4499024546746150642, guid: f35c161299009be49a22f88d31232588, type: 3}
@@ -12558,7 +12452,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 296768713570854749, guid: f35c161299009be49a22f88d31232588, type: 3}
   m_PrefabInstance: {fileID: 422710746}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422710747}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab49eb74aa65cf24e88aa6e5302d410d, type: 3}
@@ -23704,6 +23598,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d4be0db2b120b4f9963969ce1c5ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraControl: {fileID: 0}
+  playerSpeedDisplay: {fileID: 0}
+  countdownManager: {fileID: 0}
+  waypointsManager: {fileID: 0}
+  reverseImage: {fileID: 0}
+  lapText: {fileID: 0}
+  lapTimeText: {fileID: 0}
+  checkPoint: {fileID: 0}
+  boostGaugeUI: {fileID: 0}
   pausePanel: {fileID: 849454143}
   vehicleController: {fileID: 0}
   vehicleRigidbody: {fileID: 692448912}
@@ -27061,7 +26964,6 @@ SceneRoots:
   - {fileID: 940413971}
   - {fileID: 411660477}
   - {fileID: 1752672496}
-  - {fileID: 422710746}
   - {fileID: 321642989}
   - {fileID: 1678750446}
   - {fileID: 1331141863}
@@ -27072,3 +26974,4 @@ SceneRoots:
   - {fileID: 762201768}
   - {fileID: 1972498890}
   - {fileID: 1113485145}
+  - {fileID: 422710746}

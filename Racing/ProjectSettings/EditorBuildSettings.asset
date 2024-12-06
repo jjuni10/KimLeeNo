@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/1. Scenes/Robby.unity
+    guid: 4afce4a0e0d545d4a9407b4d788594bc
+  - enabled: 1
     path: Assets/1. Scenes/Loading.unity
     guid: 6e1b57d60acb3294f937e8856413150b
+  - enabled: 1
+    path: Assets/1. Scenes/MainPlay.unity
+    guid: 0ad88c27d46bbe347bbd09f6d48f5c55
   - enabled: 1
     path: Assets/1. Scenes/PracticeMode.unity
     guid: acea87cdc4a2a7c42ad297ad1ad9bf8b
   - enabled: 1
     path: Assets/1. Scenes/Result.unity
     guid: b3b9ad348dc653d408756d0d4ec3fd37
-  - enabled: 1
-    path: Assets/1. Scenes/Robby.unity
-    guid: 4afce4a0e0d545d4a9407b4d788594bc
   m_configObjects: {}

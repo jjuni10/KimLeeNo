@@ -9835,11 +9835,15 @@ MonoBehaviour:
   boostDuration: 2
   isBoosting: 0
   canBoost: 0
+  audioSource: {fileID: 0}
+  boostSound: {fileID: 8300000, guid: 6284a3ba500cd3f4886a173d48bd94ff, type: 3}
   isDrifting: 0
   driftPower: 0.4
   particleOverTime: 10
   leftTireParticle: {fileID: 8492139671447210238}
   rightTireParticle: {fileID: 4708504826846328019}
+  audio: {fileID: 0}
+  driftSound: {fileID: 8300000, guid: 8872c9a2fefc4604c89681a48c50874e, type: 3}
   brakeForce: 10
   isBraking: 0
   normalTexture: {fileID: 2800000, guid: cc43a237dc1060d4fa655eb1dd2d49a5, type: 3}
@@ -9896,6 +9900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankData: 0
   curLap: {fileID: 7941074229218611615}
+  distanceWaypoint: 0
+  carName: 
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

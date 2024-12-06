@@ -26,6 +26,11 @@ public class BoostGauge : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        GameManager.Instance.boostGaugeUI.boostGauge = this;
+    }
+
     void Update()
     {
         GaugeUp(player.curSpeed);

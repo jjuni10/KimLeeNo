@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI lapText;
     public TextMeshProUGUI lapTimeText;
     public GameObject checkPoint;
+    public BoostGaugeUI boostGaugeUI;
 
     [Header ("NMS")]
     public GameObject pausePanel;          // 일시정지 패널 연결
