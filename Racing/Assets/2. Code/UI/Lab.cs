@@ -1,12 +1,12 @@
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class LapCounter : MonoBehaviour
 {
     public TextMeshProUGUI lapText;       // 현재 랩 UI
     public TextMeshProUGUI lapTimeText;   // 랩 시간 UI
     public GameObject checkpoint;         // 체크포인트 오브젝트
-    public int totalLaps = 3;             // 총 Lap 수
+    public int totalLaps = 4;             // 총 Lap 수
 
     public int currentLap = 0;           // 현재 Lap 수
     private bool canCountLap = true;      // 중복 감지 방지 플래그
@@ -70,7 +70,8 @@ public class LapCounter : MonoBehaviour
     {
         if (currentLap >= totalLaps)
         {
-            lapText.text = "3 / 3"; // 랩이 끝났으면 "End"로 표시
+            lapText.text = $"{totalLaps} / {totalLaps}"; // 완료 표시
+            LoadNextScene(); // 다음 씬 로드
         }
         else
         {
@@ -80,16 +81,25 @@ public class LapCounter : MonoBehaviour
 
     private void UpdateLapTimeText()
     {
-        // 시간 출력은 분:초 형식으로 표시
         string lapTimeInfo = "";
         for (int i = 1; i < currentLap; i++) // i = 1부터 시작
         {
-            // 초를 분과 초로 나누기
             int minutes = Mathf.FloorToInt(lapTimes[i - 1] / 60f);
             int seconds = Mathf.FloorToInt(lapTimes[i - 1] % 60f);
 
-            lapTimeInfo += $"LAP {i} : {minutes:D2}:{seconds:D2} minutes\n"; // 랩 번호와 시간 표시
+            // 랩 시간 정보를 UI에 표시
+            lapTimeInfo += $"LAP {i} : {minutes:D2}:{seconds:D2} minutes\n";
+
+            // 각 랩 시간을 PlayerPrefs에 저장
+            PlayerPrefs.SetFloat($"LapTime_{i}", lapTimes[i - 1]);
         }
-        lapTimeText.text = lapTimeInfo; // 시간 정보를 UI에 표시
+        lapTimeText.text = lapTimeInfo;
+
+        // 저장 내용을 즉시 적용
+        PlayerPrefs.Save();
+    }
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene("Result"); // 다음 씬 이름으로 변경
     }
 }
