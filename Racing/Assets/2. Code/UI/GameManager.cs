@@ -1,68 +1,97 @@
 using System.Collections;
 using UnityEngine;
-using TMPro; // TextMeshPro »ç¿ë
-using UnityEngine.SceneManagement; // SceneManager Ãß°¡
+using TMPro; // TextMeshPro ì‚¬ìš©
+using UnityEngine.SceneManagement; // SceneManager ì¶”ê°€
+using System.Reflection.Emit;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pausePanel;          // ÀÏ½ÃÁ¤Áö ÆĞ³Î ¿¬°á
-    public MonoBehaviour vehicleController; // Â÷·® Á¦¾î ½ºÅ©¸³Æ®
-    public Rigidbody vehicleRigidbody;     // Â÷·® Rigidbody
+    private static GameManager _instance;
 
-    private AudioSource[] audioSources;    // ¸ğµç AudioSource ÀúÀå
-    private bool isPaused = false;         // °ÔÀÓÀÌ ÀÏ½ÃÁ¤Áö »óÅÂÀÎÁö ÃßÀû
+    [Header("Object")]
+    public CameraControl cameraControl;
+    public PlayerSpeedDisplay playerSpeedDisplay;
+    public CountdownManager countdownManager;
+    public WaypointsManager waypointsManager;
+    public Image reverseImage;
+    public TextMeshProUGUI lapText;
+    public TextMeshProUGUI lapTimeText;
+    public GameObject checkPoint;
+
+    [Header ("NMS")]
+    public GameObject pausePanel;          // ì¼ì‹œì •ì§€ íŒ¨ë„ ì—°ê²°
+    public MonoBehaviour vehicleController; // ì°¨ëŸ‰ ì œì–´ ìŠ¤í¬ë¦½íŠ¸
+    public Rigidbody vehicleRigidbody;     // ì°¨ëŸ‰ Rigidbody
+
+    private AudioSource[] audioSources;    // ëª¨ë“  AudioSource ì €ì¥
+    private bool isPaused = false;         // ê²Œì„ì´ ì¼ì‹œì •ì§€ ìƒíƒœì¸ì§€ ì¶”ì 
+
+    public static GameManager Instance
+    {
+        get { return _instance; }
+        set { }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã ÀÏ½ÃÁ¤Áö ÆĞ³Î ºñÈ°¼ºÈ­
+        // ê²Œì„ ì‹œì‘ ì‹œ ì¼ì‹œì •ì§€ íŒ¨ë„ ë¹„í™œì„±í™”
         pausePanel.SetActive(false);
 
-        // Â÷·® Á¦¾î ½ºÅ©¸³Æ® ºñÈ°¼ºÈ­
+        // ì°¨ëŸ‰ ì œì–´ ìŠ¤í¬ë¦½íŠ¸ ë¹„í™œì„±í™”
         if (vehicleController != null)
         {
             vehicleController.enabled = false;
         }
 
-        // Rigidbody ¹°¸® µ¿ÀÛ Á¤Áö
+        // Rigidbody ë¬¼ë¦¬ ë™ì‘ ì •ì§€
         if (vehicleRigidbody != null)
         {
             vehicleRigidbody.isKinematic = true;
         }
 
-        // ¸ğµç AudioSource °¡Á®¿À±â
+        // ëª¨ë“  AudioSource ê°€ì ¸ì˜¤ê¸°
         audioSources = FindObjectsOfType<AudioSource>();
     }
 
     private void Update()
     {
-        // ESC Å° ÀÔ·Â °¨Áö
+        // ESC í‚¤ ì…ë ¥ ê°ì§€
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause(); // ÀÏ½ÃÁ¤Áö »óÅÂ¸¦ ¹İÀü½ÃÅ´
+            TogglePause(); // ì¼ì‹œì •ì§€ ìƒíƒœë¥¼ ë°˜ì „ì‹œí‚´
         }
     }
 
     public void TogglePause()
     {
-        if (isPaused) // ÀÏ½ÃÁ¤Áö »óÅÂ¶ó¸é
+        if (isPaused) // ì¼ì‹œì •ì§€ ìƒíƒœë¼ë©´
         {
-            ResumeGame(); // °ÔÀÓ Àç°³
+            ResumeGame(); // ê²Œì„ ì¬ê°œ
         }
-        else // ÀÏ½ÃÁ¤Áö°¡ ¾Æ´Ï¸é
+        else // ì¼ì‹œì •ì§€ê°€ ì•„ë‹ˆë©´
         {
-            PauseGame(); // °ÔÀÓ ÀÏ½ÃÁ¤Áö
+            PauseGame(); // ê²Œì„ ì¼ì‹œì •ì§€
         }
     }
 
     private void PauseGame()
     {
-        Time.timeScale = 0f; // °ÔÀÓ ½Ã°£ ¸ØÃã
-        pausePanel.SetActive(true); // ÀÏ½ÃÁ¤Áö ÆĞ³Î È°¼ºÈ­
-        Cursor.lockState = CursorLockMode.None; // ¸¶¿ì½º Ä¿¼­ ÇØÁ¦
-        Cursor.visible = true; // ¸¶¿ì½º Ä¿¼­ º¸ÀÌ±â
-        isPaused = true; // ÀÏ½ÃÁ¤Áö »óÅÂ ¼³Á¤
+        Time.timeScale = 0f; // ê²Œì„ ì‹œê°„ ë©ˆì¶¤
+        pausePanel.SetActive(true); // ì¼ì‹œì •ì§€ íŒ¨ë„ í™œì„±í™”
+        Cursor.lockState = CursorLockMode.None; // ë§ˆìš°ìŠ¤ ì»¤ì„œ í•´ì œ
+        Cursor.visible = true; // ë§ˆìš°ìŠ¤ ì»¤ì„œ ë³´ì´ê¸°
+        isPaused = true; // ì¼ì‹œì •ì§€ ìƒíƒœ ì„¤ì •
 
-        // ¸ğµç ¿Àµğ¿À Á¤Áö
+        // ëª¨ë“  ì˜¤ë””ì˜¤ ì •ì§€
         foreach (var source in audioSources)
         {
             if (source.isPlaying)
@@ -74,13 +103,13 @@ public class GameManager : MonoBehaviour
 
     private void ResumeGame()
     {
-        Time.timeScale = 1f; // °ÔÀÓ ½Ã°£ Àç°³
-        pausePanel.SetActive(false); // ÀÏ½ÃÁ¤Áö ÆĞ³Î ºñÈ°¼ºÈ­
-        Cursor.lockState = CursorLockMode.Locked; // ¸¶¿ì½º Ä¿¼­ Àá±İ
-        Cursor.visible = false; // ¸¶¿ì½º Ä¿¼­ ¼û±â±â
-        isPaused = false; // ÀÏ½ÃÁ¤Áö »óÅÂ ÇØÁ¦
+        Time.timeScale = 1f; // ê²Œì„ ì‹œê°„ ì¬ê°œ
+        pausePanel.SetActive(false); // ì¼ì‹œì •ì§€ íŒ¨ë„ ë¹„í™œì„±í™”
+        Cursor.lockState = CursorLockMode.Locked; // ë§ˆìš°ìŠ¤ ì»¤ì„œ ì ê¸ˆ
+        Cursor.visible = false; // ë§ˆìš°ìŠ¤ ì»¤ì„œ ìˆ¨ê¸°ê¸°
+        isPaused = false; // ì¼ì‹œì •ì§€ ìƒíƒœ í•´ì œ
 
-        // ¸ğµç ¿Àµğ¿À Àç°³
+        // ëª¨ë“  ì˜¤ë””ì˜¤ ì¬ê°œ
         foreach (var source in audioSources)
         {
             if (source != null)
@@ -90,29 +119,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Continue ¹öÆ° Å¬¸¯ ½Ã È£ÃâµÉ ÇÔ¼ö
+    // Continue ë²„íŠ¼ í´ë¦­ ì‹œ í˜¸ì¶œë  í•¨ìˆ˜
     public void OnContinueButton()
     {
-        ResumeGame(); // °ÔÀÓÀ» Àç°³
+        ResumeGame(); // ê²Œì„ì„ ì¬ê°œ
     }
 
-    // Restart ¹öÆ° Å¬¸¯ ½Ã È£ÃâµÉ ÇÔ¼ö
+    // Restart ë²„íŠ¼ í´ë¦­ ì‹œ í˜¸ì¶œë  í•¨ìˆ˜
     public void OnRestartButton()
     {
-        RestartGame(); // °ÔÀÓ Àç½ÃÀÛ
+        RestartGame(); // ê²Œì„ ì¬ì‹œì‘
     }
 
-    // °ÔÀÓÀ» ´Ù½Ã ½ÃÀÛÇÏ´Â ÇÔ¼ö
+    // ê²Œì„ì„ ë‹¤ì‹œ ì‹œì‘í•˜ëŠ” í•¨ìˆ˜
     private void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // ÇöÀç ¾ÀÀ» ´Ù½Ã ·ÎµåÇÏ¿© °ÔÀÓÀ» ÃÊ±âÈ­
-        Time.timeScale = 1f; // ½Ã°£ ½ºÄÉÀÏÀ» Á¤»óÀ¸·Î µÇµ¹¸®±â
-        isPaused = false; // ÀÏ½ÃÁ¤Áö »óÅÂ ÇØÁ¦
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // í˜„ì¬ ì”¬ì„ ë‹¤ì‹œ ë¡œë“œí•˜ì—¬ ê²Œì„ì„ ì´ˆê¸°í™”
+        Time.timeScale = 1f; // ì‹œê°„ ìŠ¤ì¼€ì¼ì„ ì •ìƒìœ¼ë¡œ ë˜ëŒë¦¬ê¸°
+        isPaused = false; // ì¼ì‹œì •ì§€ ìƒíƒœ í•´ì œ
     }
 
     public void QuitGame()
     {
-        // °ÔÀÓ Á¾·á ¹öÆ°
+        // ê²Œì„ ì¢…ë£Œ ë²„íŠ¼
         Application.Quit();
     }
 }

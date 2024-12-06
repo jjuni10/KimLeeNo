@@ -8,7 +8,7 @@ public class LapCounter : MonoBehaviour
     public GameObject checkpoint;         // 체크포인트 오브젝트
     public int totalLaps = 4;             // 총 Lap 수
 
-    private int currentLap = 0;           // 현재 Lap 수
+    public int currentLap = 0;           // 현재 Lap 수
     private bool canCountLap = true;      // 중복 감지 방지 플래그
     private bool timerStarted = false;    // 타이머 시작 여부
     private float lapStartTime;           // 현재 랩 시작 시간
@@ -16,7 +16,11 @@ public class LapCounter : MonoBehaviour
 
     private void Start()
     {
-        lapTimes = new float[totalLaps];  // 총 랩 수만큼 배열 생성
+        lapText = GameManager.Instance.lapText;
+        lapTimeText = GameManager.Instance.lapTimeText;
+        checkpoint = GameManager.Instance.checkPoint;
+        
+        lapTimes = new float[totalLaps-1];  // 총 랩 수만큼 배열 생성
         lapStartTime = Time.time;         // 첫 랩 시작 시간 초기화
         UpdateLapText();
         UpdateLapTimeText();
@@ -45,8 +49,11 @@ public class LapCounter : MonoBehaviour
             }
 
             currentLap++; // Lap 수 증가
-            UpdateLapText();
-            UpdateLapTimeText();
+            if (this.gameObject.tag == "Player")
+            {
+                UpdateLapText();
+                UpdateLapTimeText();
+            }
 
             // 30초 동안 다시 감지되지 않도록 설정
             StartCoroutine(DisableCheckpointForOneMinute());

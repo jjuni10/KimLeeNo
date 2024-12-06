@@ -4,8 +4,15 @@ using System.Collections;
 
 public class ReverseDetection : MonoBehaviour
 {
+    [Header("Rank)")]
+    public float rankData;
+    public LapCounter curLap;
+    public float distanceWaypoint;
+    public string carName;
+
+    [Header("NMS")]
     public Transform[] waypoints; // Waypoints 배열
-    private int currentWaypointIndex = 0; // 현재 Waypoint 인덱스
+    public int currentWaypointIndex = 0; // 현재 Waypoint 인덱스
     private Transform car; // 차량 Transform
     private bool isReversing = false; // 역주행 상태를 추적하는 변수
     private Coroutine reverseCoroutine; // 역주행 텍스트를 지연시키는 코루틴 참조
@@ -15,12 +22,15 @@ public class ReverseDetection : MonoBehaviour
     [Range(-1f, 0f)]
     public float reverseThreshold = -0.2f; // 역주행으로 간주할 Dot 임계값
 
-    public float waypointThreshold = 5f; // Waypoint 거리 임계값
+    public float waypointThreshold = 15f; // Waypoint 거리 임계값
 
     private float carSpeed; // 차량의 속도
 
     private void Start()
     {
+        waypoints = GameManager.Instance.waypointsManager.waypoints;
+        reverseImage = GameManager.Instance.reverseImage;
+
         car = transform; // 차량의 Transform 설정
         if (reverseImage != null)
         {
@@ -31,6 +41,8 @@ public class ReverseDetection : MonoBehaviour
     private void Update()
     {
         DetectReverseDriving();
+
+        rankData = currentWaypointIndex * 100+curLap.currentLap*100000+distanceWaypoint;
     }
 
     private void DetectReverseDriving()
@@ -38,6 +50,13 @@ public class ReverseDetection : MonoBehaviour
         // 현재 Waypoint와 다음 Waypoint를 가져옴
         Transform currentWaypoint = waypoints[currentWaypointIndex];
         Transform nextWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Length];
+        Transform previousWaypoint = waypoints[(currentWaypointIndex-1+waypoints.Length)%waypoints.Length];
+
+        float curDistance=Vector3.Distance(this.gameObject.transform.position,currentWaypoint.transform.position);
+        float nextDistance=Vector3.Distance(this.gameObject.transform.position,nextWaypoint.transform.position);
+        float nextWaypointDistance=Vector3.Distance(currentWaypoint.transform.position,nextWaypoint.transform.position);
+
+        distanceWaypoint=(nextDistance>nextWaypointDistance)?-curDistance:curDistance;
 
         // 차량의 진행 방향 벡터
         Vector3 carDirection = car.forward;
