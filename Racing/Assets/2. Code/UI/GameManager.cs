@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Image reverseImage;
     public TextMeshProUGUI lapText;
     public TextMeshProUGUI lapTimeText;
+    public GameObject checkPoint;
 
     [Header ("NMS")]
     public GameObject pausePanel;          // 일시정지 패널 연결

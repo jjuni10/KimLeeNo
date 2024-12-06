@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         cameraController = GameManager.Instance.cameraControl;
+        this.GetComponent<ReverseDetection>().carName = "Player";
     }
 
     void Update()

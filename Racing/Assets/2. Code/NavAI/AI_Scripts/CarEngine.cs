@@ -75,6 +75,8 @@ public class CarEngine : MonoBehaviour
                 }
             }
         }
+
+        this.GetComponent<ReverseDetection>().carName=carType.ToString();
     }
     private void SetTireFrictionByCarType()
     {

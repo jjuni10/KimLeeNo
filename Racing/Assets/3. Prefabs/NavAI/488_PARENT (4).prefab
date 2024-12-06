@@ -1750,6 +1750,8 @@ GameObject:
   - component: {fileID: 6297034058974676542}
   - component: {fileID: 7628551848660782558}
   - component: {fileID: 7945279728840828068}
+  - component: {fileID: 5748848483215889429}
+  - component: {fileID: 3349507173535423689}
   m_Layer: 7
   m_Name: 488_PARENT (4)
   m_TagString: Car
@@ -1930,6 +1932,42 @@ MonoBehaviour:
   frontSideSensorPosition: 1
   frontSensorAngle: 30
   detectionRange: 20
+--- !u!114 &5748848483215889429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251065305439643807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2f62eddecc6e0499e11dd0d33b953e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rankData: 0
+  curLap: {fileID: 3349507173535423689}
+  waypoints: []
+  currentWaypointIndex: 0
+  reverseImage: {fileID: 0}
+  reverseThreshold: -0.2
+  waypointThreshold: 15
+--- !u!114 &3349507173535423689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251065305439643807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782b7dd4478fd1347b4736f960aba7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lapText: {fileID: 0}
+  lapTimeText: {fileID: 0}
+  checkpoint: {fileID: 0}
+  totalLaps: 3
+  currentLap: 0
 --- !u!1 &8277446775431096165
 GameObject:
   m_ObjectHideFlags: 0

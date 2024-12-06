@@ -9881,6 +9881,7 @@ MonoBehaviour:
   lapTimeText: {fileID: 0}
   checkpoint: {fileID: 3940934207661482118}
   totalLaps: 4
+  currentLap: 0
 --- !u!114 &644838749088821330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9893,6 +9894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2f62eddecc6e0499e11dd0d33b953e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankData: 0
+  curLap: {fileID: 7941074229218611615}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
