@@ -106,7 +106,7 @@ public class ReverseDetection : MonoBehaviour
 
     private IEnumerator ShowReverseImageWithDelay()
     {
-        yield return new WaitForSeconds(1f); // 1초 대기
+        yield return new WaitForSeconds(2f); // 1초 대기
         if (isReversing) // 여전히 역주행 상태인지 확인
         {
             reverseImage.gameObject.SetActive(true); // 이미지 활성화

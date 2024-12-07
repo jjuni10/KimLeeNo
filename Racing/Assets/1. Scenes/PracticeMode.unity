@@ -10046,7 +10046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3940934207661482118, guid: f35c161299009be49a22f88d31232588, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5065351467115562746, guid: f35c161299009be49a22f88d31232588, type: 3}
       propertyPath: audio
@@ -23598,15 +23598,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d4be0db2b120b4f9963969ce1c5ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraControl: {fileID: 0}
-  playerSpeedDisplay: {fileID: 0}
-  countdownManager: {fileID: 0}
-  waypointsManager: {fileID: 0}
-  reverseImage: {fileID: 0}
-  lapText: {fileID: 0}
-  lapTimeText: {fileID: 0}
-  checkPoint: {fileID: 0}
-  boostGaugeUI: {fileID: 0}
+  cameraControl: {fileID: 411660478}
+  playerSpeedDisplay: {fileID: 747894189}
+  countdownManager: {fileID: 833799856}
+  waypointsManager: {fileID: 860291556}
+  reverseImage: {fileID: 859160891}
+  lapText: {fileID: 1663008160}
+  lapTimeText: {fileID: 247175306}
+  checkPoint: {fileID: 1331141859}
+  boostGaugeUI: {fileID: 1810011872}
   pausePanel: {fileID: 849454143}
   vehicleController: {fileID: 0}
   vehicleRigidbody: {fileID: 692448912}

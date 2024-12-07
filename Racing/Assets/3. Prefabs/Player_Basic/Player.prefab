@@ -9982,7 +9982,7 @@ MonoBehaviour:
   - {fileID: 0}
   currentWaypointIndex: 0
   reverseImage: {fileID: 0}
-  reverseThreshold: -0.4
+  reverseThreshold: 0
   waypointThreshold: 10
 --- !u!1001 &3940934208426516763
 PrefabInstance:
