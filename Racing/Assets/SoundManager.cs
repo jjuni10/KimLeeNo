@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource driftAudio;
     public AudioSource countAudio;
     public AudioSource bgmAudio;
+    public AudioSource engineAudio;
 
     public static SoundManager Instance
     {

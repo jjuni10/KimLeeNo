@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ReverseDetection : MonoBehaviour
 {
-    [Header("Rank)")]
+    [Header("Rank")]
     public float rankData;
     public LapCounter curLap;
     public float distanceWaypoint;
@@ -31,6 +31,12 @@ public class ReverseDetection : MonoBehaviour
         waypoints = GameManager.Instance.waypointsManager.waypoints;
         reverseImage = GameManager.Instance.reverseImage;
 
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("No waypoints found!");
+            return;
+        }
+
         car = transform; // 차량의 Transform 설정
         if (reverseImage != null)
         {
@@ -42,21 +48,33 @@ public class ReverseDetection : MonoBehaviour
     {
         DetectReverseDriving();
 
-        rankData = currentWaypointIndex * 100+curLap.currentLap*100000+distanceWaypoint;
+        rankData = currentWaypointIndex * 100 + curLap.currentLap * 100000 + distanceWaypoint;
     }
 
     private void DetectReverseDriving()
     {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("No waypoints found!");
+            return;
+        }
+
         // 현재 Waypoint와 다음 Waypoint를 가져옴
         Transform currentWaypoint = waypoints[currentWaypointIndex];
         Transform nextWaypoint = waypoints[(currentWaypointIndex + 1) % waypoints.Length];
-        Transform previousWaypoint = waypoints[(currentWaypointIndex-1+waypoints.Length)%waypoints.Length];
+        Transform previousWaypoint = waypoints[(currentWaypointIndex - 1 + waypoints.Length) % waypoints.Length];
 
-        float curDistance=Vector3.Distance(this.gameObject.transform.position,currentWaypoint.transform.position);
-        float nextDistance=Vector3.Distance(this.gameObject.transform.position,nextWaypoint.transform.position);
-        float nextWaypointDistance=Vector3.Distance(currentWaypoint.transform.position,nextWaypoint.transform.position);
+        if (currentWaypoint == null || nextWaypoint == null)
+        {
+            Debug.LogError("Invalid waypoint index!");
+            return;
+        }
 
-        distanceWaypoint=(nextDistance>nextWaypointDistance)?-curDistance:curDistance;
+        float curDistance = Vector3.Distance(this.gameObject.transform.position, currentWaypoint.transform.position);
+        float nextDistance = Vector3.Distance(this.gameObject.transform.position, nextWaypoint.transform.position);
+        float nextWaypointDistance = Vector3.Distance(currentWaypoint.position, nextWaypoint.position);
+
+        distanceWaypoint = (nextDistance > nextWaypointDistance) ? -curDistance : curDistance;
 
         // 차량의 진행 방향 벡터
         Vector3 carDirection = car.forward;
@@ -97,7 +115,7 @@ public class ReverseDetection : MonoBehaviour
         }
 
         // Waypoint 도달 여부 확인 (정상 주행일 경우만 갱신)
-        if (!isReversing && Vector3.Distance(car.position, nextWaypoint.position) < waypointThreshold) 
+        if (!isReversing && Vector3.Distance(car.position, nextWaypoint.position) < waypointThreshold)
         {
             // 다음 Waypoint로 이동
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
@@ -106,7 +124,7 @@ public class ReverseDetection : MonoBehaviour
 
     private IEnumerator ShowReverseImageWithDelay()
     {
-        yield return new WaitForSeconds(2f); // 1초 대기
+        yield return new WaitForSeconds(1f); // 1초 대기
         if (isReversing) // 여전히 역주행 상태인지 확인
         {
             reverseImage.gameObject.SetActive(true); // 이미지 활성화

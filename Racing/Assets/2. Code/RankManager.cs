@@ -39,9 +39,16 @@ public class RankManager : MonoBehaviour
 
     void RankUIUpdate()
     {
-        for(int i=0;i<playCar.Count; i++)
+        // 플레이어의 전체 랭킹 배열을 문자열로 변환하여 저장
+        List<string> rankList = new List<string>();
+
+        for (int i = 0; i < playCar.Count; i++)
         {
-            rankText[i].text = $"{i+1}-{playCar[i].GetComponent<ReverseDetection>().carName}";
+            string rankInfo = $"{i + 1}-{playCar[i].GetComponent<ReverseDetection>().carName}";
+            rankText[i].text = rankInfo;
+
+            // 플레이어의 순위를 배열에 추가
+            rankList.Add(rankInfo);
 
             if (playCar[i].GetComponent<ReverseDetection>().carName == "Player")
             {
@@ -52,5 +59,10 @@ public class RankManager : MonoBehaviour
                 rankText[i].color = Color.white;
             }
         }
+
+        // 배열을 문자열로 변환하여 PlayerPrefs에 저장
+        string rankString = string.Join(",", rankList);
+        PlayerPrefs.SetString("RankList", rankString);
+        PlayerPrefs.Save();
     }
 }
