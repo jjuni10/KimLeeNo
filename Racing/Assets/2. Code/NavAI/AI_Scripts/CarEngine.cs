@@ -171,7 +171,7 @@ public class CarEngine : MonoBehaviour
         yield return new WaitForSeconds(waitTime); // 지정된 시간 대기
         ReleaseBrakes();
         isReadyToMove = true; // 차량을 움직일 준비 완료
-        StartCoroutine(InitialBoost(5f, 4f)); // 5초 동안 2배 가속 부스트
+        StartCoroutine(InitialBoost(5f, 8f)); // 5초 동안 8배 가속 부스트
     }
     private void ApplyBrakes()
     {
