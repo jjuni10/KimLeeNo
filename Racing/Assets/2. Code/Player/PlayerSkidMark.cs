@@ -20,7 +20,7 @@ public class PlayerSkidMark : MonoBehaviour
     {
         // 스키드 마크를 그릴 MeshCollider가 있는 바퀴들
         MeshCollider[] meshColliders = GetComponentsInChildren<MeshCollider>();
-        bool shouldCreateSkidMark = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift); // 조건 체크
+        bool shouldCreateSkidMark = Input.GetKey(KeyCode.LeftControl); // 조건 체크
         Vector3[] skidPositions = new Vector3[meshColliders.Length]; // 스키드 마크 위치 저장
 
         if (shouldCreateSkidMark)
