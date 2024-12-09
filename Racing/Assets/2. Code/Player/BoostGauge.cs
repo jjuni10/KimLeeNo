@@ -22,7 +22,13 @@ public class BoostGauge : MonoBehaviour
             {
                 player.canBoost = true;
             }
+
         }
+    }
+
+    void Start()
+    {
+        GameManager.Instance.boostGaugeUI.boostGauge = this;
     }
 
     void Update()

@@ -16,8 +16,8 @@ public class CarEngine : MonoBehaviour
 
 
     public Transform path;
-    public float maxSteerAngle = 45f;  // 바퀴의 최대 회전 각도
-    public float turnSpeed = 4f;
+    public float maxSteerAngle = 50f;  // 바퀴의 최대 회전 각도
+    public float turnSpeed = 6f;
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
     public WheelCollider wheelRL;
@@ -26,17 +26,17 @@ public class CarEngine : MonoBehaviour
     public GameObject skidPrefab; // 스키드 마크 프리팹
     private float skidTime; // 스키드 마크 생성 간격 타이머
 
-    public float maxMotorTorque = 80f;  // 바퀴의 회전력
-    public float maxBrakeTorque = 150f; // 브레이크 되는 값
+    public float maxMotorTorque = 100f;  // 바퀴의 회전력
+    public float maxBrakeTorque = 200f; // 브레이크 되는 값
     public float currentSpeed;          // 현재 속도
-    public float maxSpeed = 100f;       // 최고 속도
+    public float maxSpeed = 120f;       // 최고 속도
 
     public Vector3 centerOfMass;        // 자동차의 중점
 
     public bool isBraking = false;      // 브레이크 상태 체크
 
     [Header("Sensors")]
-    public float sensorLength = 2f;
+    public float sensorLength = 2.5f;
     public Vector3 frontSensorPosition = new Vector3(0, 0.65f, 0.5f);
     public float frontSideSensorPosition = 1f;
     public float frontSensorAngle = 30f;
@@ -50,6 +50,8 @@ public class CarEngine : MonoBehaviour
     public float detectionRange = 20f; // 기본 탐지 범위
 
     private int lastNodeIndex = 0; // 마지막으로 지나친 노드 인덱스 저장
+
+    private bool isReadyToMove = false; // 차량이 출발 준비 완료 상태인지 체크
 
 
     // Start is called before the first frame update
@@ -75,6 +77,9 @@ public class CarEngine : MonoBehaviour
                 }
             }
         }
+
+        this.GetComponent<ReverseDetection>().carName=carType.ToString();
+        StartCoroutine(WaitBeforeStarting(5f)); // 5초 대기후 출발
     }
     private void SetTireFrictionByCarType()
     {
@@ -84,59 +89,59 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                forwardFriction.extremumSlip = 0.3f;
-                forwardFriction.extremumValue = 1.5f;
+                forwardFriction.extremumSlip = 0.25f;
+                forwardFriction.extremumValue = 2.0f;
+                forwardFriction.asymptoteSlip = 0.5f;
+                forwardFriction.asymptoteValue = 1.5f;
+                forwardFriction.stiffness = 2.5f;
+
+                sidewaysFriction.extremumSlip = 0.2f;
+                sidewaysFriction.extremumValue = 2.2f;
+                sidewaysFriction.asymptoteSlip = 0.4f;
+                sidewaysFriction.asymptoteValue = 1.7f;
+                sidewaysFriction.stiffness = 3.0f;
+                break;
+
+            case CarType.Defensive:
+                forwardFriction.extremumSlip = 0.35f;
+                forwardFriction.extremumValue = 1.8f;
                 forwardFriction.asymptoteSlip = 0.6f;
                 forwardFriction.asymptoteValue = 1.2f;
                 forwardFriction.stiffness = 2.0f;
 
-                sidewaysFriction.extremumSlip = 0.2f;
-                sidewaysFriction.extremumValue = 1.8f;
+                sidewaysFriction.extremumSlip = 0.3f;
+                sidewaysFriction.extremumValue = 1.9f;
                 sidewaysFriction.asymptoteSlip = 0.5f;
-                sidewaysFriction.asymptoteValue = 1.5f;
+                sidewaysFriction.asymptoteValue = 1.3f;
                 sidewaysFriction.stiffness = 2.5f;
                 break;
 
-            case CarType.Defensive:
-                forwardFriction.extremumSlip = 0.5f;
-                forwardFriction.extremumValue = 1.2f;
-                forwardFriction.asymptoteSlip = 0.8f;
-                forwardFriction.asymptoteValue = 1.0f;
-                forwardFriction.stiffness = 1.2f;
-
-                sidewaysFriction.extremumSlip = 0.4f;
-                sidewaysFriction.extremumValue = 1.4f;
-                sidewaysFriction.asymptoteSlip = 0.7f;
-                sidewaysFriction.asymptoteValue = 1.1f;
-                sidewaysFriction.stiffness = 1.3f;
-                break;
-
             case CarType.SpeedFocused:
-                forwardFriction.extremumSlip = 0.4f;
-                forwardFriction.extremumValue = 1.3f;
-                forwardFriction.asymptoteSlip = 0.7f;
-                forwardFriction.asymptoteValue = 1.0f;
-                forwardFriction.stiffness = 1.8f;
+                forwardFriction.extremumSlip = 0.3f;
+                forwardFriction.extremumValue = 2.1f;
+                forwardFriction.asymptoteSlip = 0.5f;
+                forwardFriction.asymptoteValue = 1.4f;
+                forwardFriction.stiffness = 2.8f;
 
-                sidewaysFriction.extremumSlip = 0.3f;
-                sidewaysFriction.extremumValue = 1.6f;
-                sidewaysFriction.asymptoteSlip = 0.6f;
-                sidewaysFriction.asymptoteValue = 1.3f;
-                sidewaysFriction.stiffness = 2.0f;
+                sidewaysFriction.extremumSlip = 0.25f;
+                sidewaysFriction.extremumValue = 2.0f;
+                sidewaysFriction.asymptoteSlip = 0.45f;
+                sidewaysFriction.asymptoteValue = 1.6f;
+                sidewaysFriction.stiffness = 2.9f;
                 break;
 
             case CarType.Balanced:
-                forwardFriction.extremumSlip = 0.4f;
-                forwardFriction.extremumValue = 1.3f;
-                forwardFriction.asymptoteSlip = 0.7f;
-                forwardFriction.asymptoteValue = 1.0f;
-                forwardFriction.stiffness = 1.5f;
+                forwardFriction.extremumSlip = 0.3f;
+                forwardFriction.extremumValue = 2.0f;
+                forwardFriction.asymptoteSlip = 0.5f;
+                forwardFriction.asymptoteValue = 1.3f;
+                forwardFriction.stiffness = 2.5f;
 
-                sidewaysFriction.extremumSlip = 0.3f;
-                sidewaysFriction.extremumValue = 1.5f;
-                sidewaysFriction.asymptoteSlip = 0.6f;
-                sidewaysFriction.asymptoteValue = 1.2f;
-                sidewaysFriction.stiffness = 1.8f;
+                sidewaysFriction.extremumSlip = 0.25f;
+                sidewaysFriction.extremumValue = 2.0f;
+                sidewaysFriction.asymptoteSlip = 0.4f;
+                sidewaysFriction.asymptoteValue = 1.5f;
+                sidewaysFriction.stiffness = 2.7f;
                 break;
         }
 
@@ -153,10 +158,17 @@ public class CarEngine : MonoBehaviour
         wheel.sidewaysFriction = sideways;
     }
 
+    private IEnumerator WaitBeforeStarting(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime); // 지정된 시간 대기
+        isReadyToMove = true; // 차량을 움직일 준비 완료
+    }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (!isReadyToMove) return; // 출발 준비가 안 됐으면 업데이트 중단
+
         DetectFrontCar();           // 앞 차량 탐지 및 추월 처리
         CheckOvertakeCompletion();  // 추월 완료 여부 확인
         Sensors();                  // 장애물 감지
@@ -373,16 +385,16 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                targetSteerAngle = newSteer * 0.3f; // 더 과감한 회전(기본 값 1.2)
+                targetSteerAngle = newSteer * 0.3f;
                 break;
             case CarType.Defensive:
-                targetSteerAngle = newSteer * 0.8f; // 더 안정적인 회전(기본 값 0.8)
+                targetSteerAngle = newSteer * 0.4f;
                 break;
             case CarType.SpeedFocused:
-                targetSteerAngle = newSteer; // 기본 회전
+                targetSteerAngle = newSteer;
                 break;
             case CarType.Balanced:
-                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.5f); // 부드럽고 균형 있는 회전(기본 값 0.5)
+                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.4f);
                 break;
         }
     }
@@ -449,20 +461,20 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                adjustedMaxMotorTorque *= 1.7f; // 원래 값 1.5
-                maxSpeed = 110f;
-                break;
-            case CarType.Defensive:
-                adjustedMaxMotorTorque *= 1.4f; // 원래 값 0.8
-                maxSpeed = 100f;
-                break;
-            case CarType.SpeedFocused:
-                adjustedMaxMotorTorque *= 2.0f; // 원래 값 2.0
+                adjustedMaxMotorTorque *= 1.8f; // 원래 값 1.5
                 maxSpeed = 140f;
                 break;
+            case CarType.Defensive:
+                adjustedMaxMotorTorque *= 1.5f; // 원래 값 0.8
+                maxSpeed = 120f;
+                break;
+            case CarType.SpeedFocused:
+                adjustedMaxMotorTorque *= 2.2f; // 원래 값 2.0
+                maxSpeed = 160f;
+                break;
             case CarType.Balanced:
-                adjustedMaxMotorTorque *= 1.4f; // 원래 값 2.0
-                maxSpeed = 110f;
+                adjustedMaxMotorTorque *= 1.6f; // 원래 값 2.0
+                maxSpeed = 130f;
                 break;
         }
 
@@ -546,8 +558,8 @@ public class CarEngine : MonoBehaviour
                 float forwardSlip = Mathf.Abs(hit.forwardSlip);   // 전방 슬립
 
                 // 스키드 마크 생성 조건
-                bool isDrifting = sidewaysSlip > 1.0f; // 드리프트 조건
-                bool isAccelerating = forwardSlip > 0.8f; // 급가속 조건
+                bool isDrifting = sidewaysSlip > 2.0f; // 드리프트 조건
+                bool isAccelerating = forwardSlip > 1.5f; // 급가속 조건
                 bool isBrakingNow = isBraking; // 브레이크 조건
                 float minSpeedForSkid = 5.0f; // 최소 속도
 
