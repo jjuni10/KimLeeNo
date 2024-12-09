@@ -47,7 +47,7 @@ public class CarEngine : MonoBehaviour
     private float targetSteerAngle = 0;
 
     private Transform targetCar; // 앞의 자동차를 감지하기 위한 변수
-    public float detectionRange = 25f; // 기본 탐지 범위
+    public float detectionRange = 20f; // 기본 탐지 범위
 
     private int lastNodeIndex = 0; // 마지막으로 지나친 노드 인덱스 저장
 
@@ -385,16 +385,16 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                targetSteerAngle = newSteer * 0.3f; // 더 과감한 회전(기본 값 1.2)
+                targetSteerAngle = newSteer * 0.3f;
                 break;
             case CarType.Defensive:
-                targetSteerAngle = newSteer * 0.8f; // 더 안정적인 회전(기본 값 0.8)
+                targetSteerAngle = newSteer * 0.4f;
                 break;
             case CarType.SpeedFocused:
-                targetSteerAngle = newSteer; // 기본 회전
+                targetSteerAngle = newSteer;
                 break;
             case CarType.Balanced:
-                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.5f); // 부드럽고 균형 있는 회전(기본 값 0.5)
+                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.4f);
                 break;
         }
     }
@@ -558,8 +558,8 @@ public class CarEngine : MonoBehaviour
                 float forwardSlip = Mathf.Abs(hit.forwardSlip);   // 전방 슬립
 
                 // 스키드 마크 생성 조건
-                bool isDrifting = sidewaysSlip > 1.5f; // 드리프트 조건
-                bool isAccelerating = forwardSlip > 1.0f; // 급가속 조건
+                bool isDrifting = sidewaysSlip > 2.0f; // 드리프트 조건
+                bool isAccelerating = forwardSlip > 1.5f; // 급가속 조건
                 bool isBrakingNow = isBraking; // 브레이크 조건
                 float minSpeedForSkid = 5.0f; // 최소 속도
 
