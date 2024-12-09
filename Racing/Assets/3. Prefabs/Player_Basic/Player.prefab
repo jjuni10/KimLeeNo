@@ -9830,6 +9830,8 @@ MonoBehaviour:
   maxSpeed: 80
   turnSpeed: 100
   isBack: 0
+  engineSource: {fileID: 0}
+  engineSound: {fileID: 8300000, guid: 43e6db1a249e4b04988068e4c77dbe13, type: 3}
   boostGauge: {fileID: 296768713570854749}
   boostPower: 2
   boostDuration: 2
@@ -9982,8 +9984,8 @@ MonoBehaviour:
   - {fileID: 0}
   currentWaypointIndex: 0
   reverseImage: {fileID: 0}
-  reverseThreshold: -0.4
-  waypointThreshold: 10
+  reverseThreshold: 0
+  waypointThreshold: 20
 --- !u!1001 &3940934208426516763
 PrefabInstance:
   m_ObjectHideFlags: 0

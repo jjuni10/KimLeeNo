@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public float turnSpeed;
     public bool isBack;
     bool _canMove=false;
+    public AudioSource engineSource;  // 오디오 소스를 연결할 변수
+    public AudioClip engineSound;
 
     [Header("Boost")]
     public BoostGauge boostGauge;
@@ -79,12 +81,26 @@ public class Player : MonoBehaviour
         // 현재 속도 표시
         curSpeed = _rb.velocity.magnitude;
 
+        // 엔진 소리가 멈추지 않고 계속 나도록 설정
+        if (!engineSource.isPlaying)
+        {
+            engineSource.clip = engineSound;
+            engineSource.loop = true; // 소리가 계속 반복되도록 설정
+            engineSource.Play();
+        }
+
+        // 속도에 비례하여 피치 조정
+        if (engineSource.isPlaying)
+        {
+            // 속도가 0일 때는 피치를 기본 값으로 설정
+            float pitch = Mathf.Lerp(1f, 3f, curSpeed / maxSpeed); // 1은 최소 피치, 3은 최대 피치
+            engineSource.pitch = pitch;
+        }
+
         cameraController.OffsetChange(_rb.velocity.magnitude, isBoosting);
 
         PlayerBoost();
-
         PlayerDrift();
-
         PlayerBrake();
     }
 
@@ -325,6 +341,7 @@ public class Player : MonoBehaviour
     {
         audioSource = SoundManager.Instance.boostAudio;
         audio = SoundManager.Instance.driftAudio;
+        engineSource = SoundManager.Instance.engineAudio;
     }
 
     void OnTriggerStay(Collider other)
