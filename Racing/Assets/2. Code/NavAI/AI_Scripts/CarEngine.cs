@@ -220,9 +220,9 @@ public class CarEngine : MonoBehaviour
                 break;
 
             case CarType.SpeedFocused:
-                if (distanceToTarget < 15f) // 가까운 거리에서 즉시 추월
+                if (distanceToTarget < 10f) // 가까운 거리에서 즉시 추월
                 {
-                    PerformOvertake(1.2f);
+                    PerformOvertake(1.5f);
                 }
                 else if (distanceToTarget < 20f && distanceToTarget > 10f) // 중간 거리에서 추월
                 {
@@ -265,15 +265,15 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                currentSpeed *= 2.4f;
+                currentSpeed *= 3.5f;
                 break;
             case CarType.Defensive:
                 break;
             case CarType.SpeedFocused:
-                currentSpeed *= 2.0f;
+                currentSpeed *= 3.0f;
                 break;
             case CarType.Balanced:
-                currentSpeed *= 1.8f;
+                currentSpeed *= 2.0f;
                 break;
         }
     }
@@ -385,16 +385,16 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                targetSteerAngle = newSteer * 0.3f;
+                targetSteerAngle = newSteer * 0.5f;
                 break;
             case CarType.Defensive:
-                targetSteerAngle = newSteer * 0.4f;
+                targetSteerAngle = newSteer * 0.3f;
                 break;
             case CarType.SpeedFocused:
                 targetSteerAngle = newSteer;
                 break;
             case CarType.Balanced:
-                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.4f);
+                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.3f);
                 break;
         }
     }
