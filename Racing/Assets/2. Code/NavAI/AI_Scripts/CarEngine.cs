@@ -52,6 +52,7 @@ public class CarEngine : MonoBehaviour
     private int lastNodeIndex = 0; // 마지막으로 지나친 노드 인덱스 저장
 
     private bool isReadyToMove = false; // 차량이 출발 준비 완료 상태인지 체크
+    private bool isBoosting;
 
 
     // Start is called before the first frame update
@@ -160,8 +161,44 @@ public class CarEngine : MonoBehaviour
 
     private IEnumerator WaitBeforeStarting(float waitTime)
     {
+            Rigidbody rb = GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        rb.velocity = Vector3.zero; // 선속도 초기화
+        rb.angularVelocity = Vector3.zero; // 각속도 초기화
+    }
+        ApplyBrakes();
         yield return new WaitForSeconds(waitTime); // 지정된 시간 대기
+        ReleaseBrakes();
         isReadyToMove = true; // 차량을 움직일 준비 완료
+        StartCoroutine(InitialBoost(5f, 4f)); // 5초 동안 2배 가속 부스트
+    }
+    private void ApplyBrakes()
+    {
+        wheelFL.brakeTorque = maxBrakeTorque;
+        wheelFR.brakeTorque = maxBrakeTorque;
+        wheelRL.brakeTorque = maxBrakeTorque;
+        wheelRR.brakeTorque = maxBrakeTorque;
+    }
+
+    private void ReleaseBrakes()
+    {
+        wheelFL.brakeTorque = 0;
+        wheelFR.brakeTorque = 0;
+        wheelRL.brakeTorque = 0;
+        wheelRR.brakeTorque = 0;
+    }
+    private IEnumerator InitialBoost(float boostDuration, float boostMultiplier)
+    {
+        isBoosting = true;
+
+        float originalMotorTorque = maxMotorTorque;
+        maxMotorTorque *= boostMultiplier; // 토크 증가
+
+        yield return new WaitForSeconds(boostDuration); // 부스트 지속 시간
+
+        maxMotorTorque = originalMotorTorque; // 원래 토크로 복구
+        isBoosting = false;
     }
 
     // Update is called once per frame
@@ -454,6 +491,12 @@ public class CarEngine : MonoBehaviour
 
     private void Drive()
     {
+        if (!isReadyToMove)
+        {
+            wheelFL.motorTorque = 0;
+            wheelFR.motorTorque = 0;
+            return;
+        }
         currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 1000;
 
         float adjustedMaxMotorTorque = maxMotorTorque;
@@ -478,6 +521,11 @@ public class CarEngine : MonoBehaviour
                 break;
         }
 
+        // 부스트 상태에서 추가 가속 적용
+        if (isBoosting)
+        {
+            adjustedMaxMotorTorque *= 1.5f; // 부스트 중 추가 가속
+        }
         if (currentSpeed < maxSpeed && !isBraking)
         {
             wheelFL.motorTorque = adjustedMaxMotorTorque;
