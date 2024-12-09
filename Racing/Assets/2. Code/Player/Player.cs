@@ -312,7 +312,7 @@ public class Player : MonoBehaviour
 
     void PlayerBrake()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftAlt))
         {
             isBraking = true;
 
