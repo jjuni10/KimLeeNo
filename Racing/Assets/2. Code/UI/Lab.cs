@@ -70,8 +70,8 @@ public class LapCounter : MonoBehaviour
     {
         if (currentLap >= totalLaps)
         {
-            lapText.text = $"{totalLaps} / {totalLaps}"; // 완료 표시
-            LoadNextScene(); // 다음 씬 로드
+            lapText.text = "Finish!"; // 완료 표시
+            Invoke(nameof(LoadNextScene), 3f); // 5초 뒤에 다음 씬 로드
         }
         else
         {

@@ -9912,10 +9912,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   speed: 0
-  basicSpeed: 40
-  maxSpeed: 80
+  basicSpeed: 35
+  maxSpeed: 20
   turnSpeed: 100
   isBack: 0
+  engineSource: {fileID: 0}
+  engineSound: {fileID: 8300000, guid: 43e6db1a249e4b04988068e4c77dbe13, type: 3}
   boostGauge: {fileID: 296768713570854749}
   boostPower: 2
   boostDuration: 2
@@ -10068,8 +10070,8 @@ MonoBehaviour:
   - {fileID: 0}
   currentWaypointIndex: 0
   reverseImage: {fileID: 0}
-  reverseThreshold: -0.4
-  waypointThreshold: 10
+  reverseThreshold: 0
+  waypointThreshold: 20
 --- !u!114 &3243042071098596436
 MonoBehaviour:
   m_ObjectHideFlags: 0
