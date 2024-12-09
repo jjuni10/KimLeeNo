@@ -6,6 +6,7 @@ public class SpawnPoint : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject[] rasingCars;
+    public MiniMapCamera miniMapCamera; // 미니맵 카메라
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,12 @@ public class SpawnPoint : MonoBehaviour
                 GameManager.Instance.playerSpeedDisplay.playerRigidbody=spawnCar.GetComponent<Rigidbody>();
                 GameManager.Instance.countdownManager.vehicleController=spawnCar.GetComponent<MonoBehaviour>();
                 GameManager.Instance.countdownManager.vehicleRigidbody = spawnCar.GetComponent<Rigidbody>();
+
+                // 미니맵 카메라에 플레이어 자동차를 할당
+                if (miniMapCamera != null)
+                {
+                    miniMapCamera.SetTarget(spawnCar.transform);
+                }
             }
         }
 
