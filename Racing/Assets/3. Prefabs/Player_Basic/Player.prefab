@@ -9912,15 +9912,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   speed: 0
-  basicSpeed: 35
-  maxSpeed: 20
+  basicSpeed: 33
+  maxSpeed: 18
   turnSpeed: 100
   isBack: 0
   engineSource: {fileID: 0}
   engineSound: {fileID: 8300000, guid: 43e6db1a249e4b04988068e4c77dbe13, type: 3}
   boostGauge: {fileID: 296768713570854749}
   boostPower: 2
-  boostDuration: 2
+  boostDuration: 4
   isBoosting: 0
   canBoost: 0
   audioSource: {fileID: 0}
@@ -9955,7 +9955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5065351467115562746}
   gaugeValue: 5
-  driftValue: 5
+  driftValue: 7
   boostingGauge: 0
 --- !u!114 &7941074229218611615
 MonoBehaviour:
