@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1. Scenes/Loading.unity
     guid: 6e1b57d60acb3294f937e8856413150b
-  - enabled: 1
+  - enabled: 0
     path: Assets/1. Scenes/MainPlay.unity
     guid: 0ad88c27d46bbe347bbd09f6d48f5c55
+  - enabled: 1
+    path: Assets/1. Scenes/MainPlay Copy.unity
+    guid: 822d61f67c8dee64dbee8e2cae022412
   - enabled: 1
     path: Assets/1. Scenes/PracticeMode.unity
     guid: acea87cdc4a2a7c42ad297ad1ad9bf8b
