@@ -12930,7 +12930,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -21129,6 +21129,7 @@ MonoBehaviour:
   - {fileID: 6589966068394454464, guid: b9996a3f78c05a9438967b8da0cfc0ef, type: 3}
   - {fileID: 8251065305439643807, guid: 2bbc6095f2fc983459e744e88b8763c1, type: 3}
   - {fileID: 3940934207661482118, guid: f35c161299009be49a22f88d31232588, type: 3}
+  miniMapCamera: {fileID: 2064375405}
 --- !u!1 &1573383127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2902511716142349921, guid: fe49d0598fc104142ae98589a9da4c20, type: 3}
@@ -26625,6 +26626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064375404}
   - component: {fileID: 2064375403}
+  - component: {fileID: 2064375405}
   m_Layer: 0
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -26671,7 +26673,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 193
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 7e330d93f75c4a1468c0a0dd4d84f115, type: 2}
   m_TargetDisplay: 0
@@ -26698,6 +26700,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2064375405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064375401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1e136deb5a4b4abbc78bd210d6b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  offset: {x: 0, y: 10, z: 0}
+  rotateWithCar: 0
 --- !u!1 &2065949684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 754328737250183951, guid: fe49d0598fc104142ae98589a9da4c20, type: 3}
