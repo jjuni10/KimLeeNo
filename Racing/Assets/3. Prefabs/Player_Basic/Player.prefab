@@ -9972,7 +9972,7 @@ MonoBehaviour:
   lapText: {fileID: 0}
   lapTimeText: {fileID: 0}
   checkpoint: {fileID: 3940934207661482118}
-  totalLaps: 4
+  totalLaps: 3
   currentLap: 0
 --- !u!114 &644838749088821330
 MonoBehaviour:
