@@ -9912,8 +9912,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   speed: 0
-  basicSpeed: 33
-  maxSpeed: 18
+  basicSpeed: 30
+  maxSpeed: 20
   turnSpeed: 100
   isBack: 0
   engineSource: {fileID: 0}
