@@ -75,7 +75,7 @@ public class LapCounter : MonoBehaviour
         }
         else
         {
-            lapText.text = currentLap + " / " + "3"; // ÇöÀç ·¦°ú ÃÑ ·¦ ¼ö Ç¥½Ã
+            lapText.text = currentLap + " / " + "2"; // ÇöÀç ·¦°ú ÃÑ ·¦ ¼ö Ç¥½Ã
         }
     }
 
