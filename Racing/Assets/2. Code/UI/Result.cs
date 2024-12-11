@@ -8,7 +8,7 @@ public class ResultDisplay : MonoBehaviour
     private void Start()
     {
         string lapTimeInfo = "";
-        int totalLaps = 4; // 총 랩 수와 동일하게 설정
+        int totalLaps = 2; // 총 랩 수와 동일하게 설정
 
         for (int i = 1; i <= totalLaps; i++) // 각 랩 시간 불러오기
         {
