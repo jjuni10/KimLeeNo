@@ -12,7 +12,7 @@ public class PlayerSpeedDisplay : MonoBehaviour
         float speed = playerRigidbody.velocity.magnitude;
 
         // 속도를 두 배로 계산
-        float doubledSpeed = speed * 3;
+        float doubledSpeed = speed * 4;
 
         // 속도를 int로 변환 (반올림)
         int intSpeed = Mathf.RoundToInt(doubledSpeed);
