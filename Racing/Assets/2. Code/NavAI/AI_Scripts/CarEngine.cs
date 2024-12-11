@@ -52,6 +52,7 @@ public class CarEngine : MonoBehaviour
     private int lastNodeIndex = 0; // 마지막으로 지나친 노드 인덱스 저장
 
     private bool isReadyToMove = false; // 차량이 출발 준비 완료 상태인지 체크
+    private bool isBoosting;
 
 
     // Start is called before the first frame update
@@ -160,8 +161,44 @@ public class CarEngine : MonoBehaviour
 
     private IEnumerator WaitBeforeStarting(float waitTime)
     {
+            Rigidbody rb = GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        rb.velocity = Vector3.zero; // 선속도 초기화
+        rb.angularVelocity = Vector3.zero; // 각속도 초기화
+    }
+        ApplyBrakes();
         yield return new WaitForSeconds(waitTime); // 지정된 시간 대기
+        ReleaseBrakes();
         isReadyToMove = true; // 차량을 움직일 준비 완료
+        StartCoroutine(InitialBoost(5f, 8f)); // 5초 동안 8배 가속 부스트
+    }
+    private void ApplyBrakes()
+    {
+        wheelFL.brakeTorque = maxBrakeTorque;
+        wheelFR.brakeTorque = maxBrakeTorque;
+        wheelRL.brakeTorque = maxBrakeTorque;
+        wheelRR.brakeTorque = maxBrakeTorque;
+    }
+
+    private void ReleaseBrakes()
+    {
+        wheelFL.brakeTorque = 0;
+        wheelFR.brakeTorque = 0;
+        wheelRL.brakeTorque = 0;
+        wheelRR.brakeTorque = 0;
+    }
+    private IEnumerator InitialBoost(float boostDuration, float boostMultiplier)
+    {
+        isBoosting = true;
+
+        float originalMotorTorque = maxMotorTorque;
+        maxMotorTorque *= boostMultiplier; // 토크 증가
+
+        yield return new WaitForSeconds(boostDuration); // 부스트 지속 시간
+
+        maxMotorTorque = originalMotorTorque; // 원래 토크로 복구
+        isBoosting = false;
     }
 
     // Update is called once per frame
@@ -220,9 +257,9 @@ public class CarEngine : MonoBehaviour
                 break;
 
             case CarType.SpeedFocused:
-                if (distanceToTarget < 15f) // 가까운 거리에서 즉시 추월
+                if (distanceToTarget < 10f) // 가까운 거리에서 즉시 추월
                 {
-                    PerformOvertake(1.2f);
+                    PerformOvertake(1.5f);
                 }
                 else if (distanceToTarget < 20f && distanceToTarget > 10f) // 중간 거리에서 추월
                 {
@@ -265,15 +302,15 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                currentSpeed *= 2.4f;
+                currentSpeed *= 3.5f;
                 break;
             case CarType.Defensive:
                 break;
             case CarType.SpeedFocused:
-                currentSpeed *= 2.0f;
+                currentSpeed *= 3.0f;
                 break;
             case CarType.Balanced:
-                currentSpeed *= 1.8f;
+                currentSpeed *= 2.0f;
                 break;
         }
     }
@@ -385,16 +422,16 @@ public class CarEngine : MonoBehaviour
         switch (carType)
         {
             case CarType.Aggressive:
-                targetSteerAngle = newSteer * 0.3f;
+                targetSteerAngle = newSteer * 0.5f;
                 break;
             case CarType.Defensive:
-                targetSteerAngle = newSteer * 0.4f;
+                targetSteerAngle = newSteer * 0.3f;
                 break;
             case CarType.SpeedFocused:
                 targetSteerAngle = newSteer;
                 break;
             case CarType.Balanced:
-                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.4f);
+                targetSteerAngle = Mathf.Lerp(newSteer, targetSteerAngle, 0.3f);
                 break;
         }
     }
@@ -454,6 +491,12 @@ public class CarEngine : MonoBehaviour
 
     private void Drive()
     {
+        if (!isReadyToMove)
+        {
+            wheelFL.motorTorque = 0;
+            wheelFR.motorTorque = 0;
+            return;
+        }
         currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 1000;
 
         float adjustedMaxMotorTorque = maxMotorTorque;
@@ -478,6 +521,11 @@ public class CarEngine : MonoBehaviour
                 break;
         }
 
+        // 부스트 상태에서 추가 가속 적용
+        if (isBoosting)
+        {
+            adjustedMaxMotorTorque *= 1.5f; // 부스트 중 추가 가속
+        }
         if (currentSpeed < maxSpeed && !isBraking)
         {
             wheelFL.motorTorque = adjustedMaxMotorTorque;
