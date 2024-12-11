@@ -512,8 +512,8 @@ public class CarEngine : MonoBehaviour
                 maxSpeed = 120f;
                 break;
             case CarType.SpeedFocused:
-                adjustedMaxMotorTorque *= 2.2f; // 원래 값 2.0
-                maxSpeed = 160f;
+                adjustedMaxMotorTorque *= 2.15f; // 원래 값 2.0
+                maxSpeed = 142.5f;
                 break;
             case CarType.Balanced:
                 adjustedMaxMotorTorque *= 1.6f; // 원래 값 2.0
