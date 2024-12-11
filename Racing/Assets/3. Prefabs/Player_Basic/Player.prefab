@@ -9920,7 +9920,7 @@ MonoBehaviour:
   engineSound: {fileID: 8300000, guid: 43e6db1a249e4b04988068e4c77dbe13, type: 3}
   boostGauge: {fileID: 296768713570854749}
   boostPower: 3
-  boostDuration: 3
+  boostDuration: 2
   isBoosting: 0
   canBoost: 0
   audioSource: {fileID: 0}

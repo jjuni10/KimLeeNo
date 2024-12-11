@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1. Scenes/Loading.unity
     guid: 6e1b57d60acb3294f937e8856413150b
-  - enabled: 0
+  - enabled: 1
     path: Assets/1. Scenes/MainPlay.unity
-    guid: 0ad88c27d46bbe347bbd09f6d48f5c55
+    guid: a08275a3c782f344b8d62099f7702314
   - enabled: 1
     path: Assets/1. Scenes/MainPlay Copy.unity
     guid: 822d61f67c8dee64dbee8e2cae022412
