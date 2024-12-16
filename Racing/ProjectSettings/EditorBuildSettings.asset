@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1. Scenes/MainPlay.unity
     guid: a08275a3c782f344b8d62099f7702314
-  - enabled: 1
+  - enabled: 0
     path: Assets/1. Scenes/MainPlay Copy.unity
     guid: 822d61f67c8dee64dbee8e2cae022412
   - enabled: 1
