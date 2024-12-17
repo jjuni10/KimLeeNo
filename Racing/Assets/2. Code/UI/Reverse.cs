@@ -25,6 +25,7 @@ public class ReverseDetection : MonoBehaviour
     public float waypointThreshold = 15f; // Waypoint 거리 임계값
 
     private float carSpeed; // 차량의 속도
+    private bool canDetectReverse = false; // 역주행 감지를 시작할 수 있는지 여부
 
     private void Start()
     {
@@ -42,11 +43,17 @@ public class ReverseDetection : MonoBehaviour
         {
             reverseImage.gameObject.SetActive(false); // 초기에는 이미지 비활성화
         }
+
+        // 5초 동안 역주행 감지를 시작하지 않도록 설정
+        StartCoroutine(DelayReverseDetection(5f));
     }
 
     private void Update()
     {
-        DetectReverseDriving();
+        if (canDetectReverse)
+        {
+            DetectReverseDriving();
+        }
 
         rankData = currentWaypointIndex * 100 + curLap.currentLap * 100000 + distanceWaypoint;
     }
@@ -137,5 +144,11 @@ public class ReverseDetection : MonoBehaviour
         {
             reverseImage.gameObject.SetActive(false); // 이미지 비활성화
         }
+    }
+
+    private IEnumerator DelayReverseDetection(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime); // 지정된 시간 동안 대기
+        canDetectReverse = true; // 대기 후 역주행 감지 시작
     }
 }
